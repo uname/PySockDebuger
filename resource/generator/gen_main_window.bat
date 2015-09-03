@@ -1,1 +1,1 @@
-pyuic4 ../ui/main_window.ui > ../../Ui_MainWindow.py
+pyuic4 ../ui/main_window.ui > ../../ui/Ui_MainWindow.py

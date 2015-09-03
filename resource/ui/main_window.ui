@@ -81,6 +81,9 @@
       <height>401</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <column>
      <property name="text">
       <string/>

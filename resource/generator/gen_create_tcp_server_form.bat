@@ -1,0 +1,1 @@
+pyuic4 ../ui/create_tcp_server_form.ui > ../../ui/Ui_CreateTcpServerForm.py

@@ -1,6 +1,8 @@
 #-*- coding: utf-8 -*-
 from PyQt4 import QtGui
-from Ui_MainWindow import Ui_MainWindow
+import config
+from ui.Ui_MainWindow import Ui_MainWindow
+from presenter.MainWindowPresenter import MainWindowPresenter
 
 class MainWindow(QtGui.QMainWindow):
     
@@ -8,3 +10,15 @@ class MainWindow(QtGui.QMainWindow):
         QtGui.QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.presenter = MainWindowPresenter(self)
+        self.setupSignals()
+        
+    def setupSignals(self):
+        self.ui.createBtn.clicked.connect(self.onCreateBtnClicked)
+        
+    def onCreateBtnClicked(self):
+        createDialog = self.presenter.getCreateDialog(self.ui.sockTypeTree.currentItem())
+        if createDialog is None:
+            return
+        
+        createDialog.show()

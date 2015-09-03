@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/main_window.ui'
 #
-# Created: Fri Aug 28 23:06:47 2015
+# Created: Thu Sep 03 23:36:59 2015
 #      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -41,6 +41,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.aboutBtn, 0, 3, 1, 1)
         self.sockTypeTree = QtGui.QTreeWidget(self.centralwidget)
         self.sockTypeTree.setGeometry(QtCore.QRect(10, 60, 171, 401))
+        self.sockTypeTree.setStyleSheet(_fromUtf8(""))
         self.sockTypeTree.setObjectName(_fromUtf8("sockTypeTree"))
         item_0 = QtGui.QTreeWidgetItem(self.sockTypeTree)
         item_0 = QtGui.QTreeWidgetItem(self.sockTypeTree)
