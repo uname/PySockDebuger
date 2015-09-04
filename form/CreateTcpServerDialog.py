@@ -1,6 +1,9 @@
 #-*- coding: utf-8 -*-
+import utils
+import signals
 from ui.Ui_CreateTcpServerForm import Ui_CreateTcpServerForm
 from PyQt4 import QtGui
+from PyQt4 import QtCore
 
 class CreateTcpServerDialog(QtGui.QDialog):
 	
@@ -17,6 +20,14 @@ class CreateTcpServerDialog(QtGui.QDialog):
         self.ui.cancelBtn.clicked.connect(self.close)
         
     def onOkBtnClicked(self):
-        print 123
-    
+        strPort = utils.qstr2str(self.ui.portCmbBox.currentText())
+        if not strPort.isdigit():
+            return
+            
+        port = int(strPort)
+        if not utils.isPortOk(port):
+            return
+        
+        self.emit(signals.SIG_CREATE_TCP_SERVER, port)
+        self.close()
 	

@@ -44,6 +44,9 @@
      </item>
      <item>
       <widget class="QComboBox" name="portCmbBox">
+       <property name="inputMethodHints">
+        <set>Qt::ImhDigitsOnly</set>
+       </property>
        <property name="editable">
         <bool>true</bool>
        </property>

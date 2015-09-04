@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/create_tcp_server_form.ui'
 #
-# Created: Thu Sep 03 23:23:30 2015
-#      by: PyQt4 UI code generator 4.9.5
+# Created by: PyQt4 UI code generator 4.11.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,7 +11,16 @@ from PyQt4 import QtCore, QtGui
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
-    _fromUtf8 = lambda s: s
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_CreateTcpServerForm(object):
     def setupUi(self, CreateTcpServerForm):
@@ -29,6 +37,7 @@ class Ui_CreateTcpServerForm(object):
         self.label.setObjectName(_fromUtf8("label"))
         self.horizontalLayout.addWidget(self.label)
         self.portCmbBox = QtGui.QComboBox(CreateTcpServerForm)
+        self.portCmbBox.setInputMethodHints(QtCore.Qt.ImhDigitsOnly)
         self.portCmbBox.setEditable(True)
         self.portCmbBox.setObjectName(_fromUtf8("portCmbBox"))
         self.horizontalLayout.addWidget(self.portCmbBox)
@@ -51,8 +60,8 @@ class Ui_CreateTcpServerForm(object):
         QtCore.QMetaObject.connectSlotsByName(CreateTcpServerForm)
 
     def retranslateUi(self, CreateTcpServerForm):
-        CreateTcpServerForm.setWindowTitle(QtGui.QApplication.translate("CreateTcpServerForm", "创建TCP服务器", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("CreateTcpServerForm", "监听端口", None, QtGui.QApplication.UnicodeUTF8))
-        self.okBtn.setText(QtGui.QApplication.translate("CreateTcpServerForm", "确定", None, QtGui.QApplication.UnicodeUTF8))
-        self.cancelBtn.setText(QtGui.QApplication.translate("CreateTcpServerForm", "取消", None, QtGui.QApplication.UnicodeUTF8))
+        CreateTcpServerForm.setWindowTitle(_translate("CreateTcpServerForm", "创建TCP服务器", None))
+        self.label.setText(_translate("CreateTcpServerForm", "监听端口", None))
+        self.okBtn.setText(_translate("CreateTcpServerForm", "确定", None))
+        self.cancelBtn.setText(_translate("CreateTcpServerForm", "取消", None))
 
