@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 from ui.Ui_CreateTcpClientForm import Ui_CreateTcpClientForm
+from form.TipPupup import TipPupup
 from PyQt4 import QtGui
 
 class CreateTcpClientDialog(QtGui.QDialog):

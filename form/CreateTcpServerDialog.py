@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 import utils
 import signals
+import error
 from ui.Ui_CreateTcpServerForm import Ui_CreateTcpServerForm
 from PyQt4 import QtGui
 from PyQt4 import QtCore
