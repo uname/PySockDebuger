@@ -72,7 +72,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QTreeWidget" name="sockTypeTree">
+   <widget class="SockTreeWidget" name="sockTypeTree">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -136,6 +136,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SockTreeWidget</class>
+   <extends>QTreeWidget</extends>
+   <header location="global">view/SockTreeWidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

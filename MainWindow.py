@@ -24,6 +24,7 @@ class MainWindow(QtGui.QMainWindow):
         createDialog.show()
     
     def onCreateTcpServerOK(self, address):
+        self.ui.sockTypeTree.addTcpServer(address)
         print "OK!"
         
     def closeEvent(self, e):
