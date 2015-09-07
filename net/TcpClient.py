@@ -1,5 +1,7 @@
 #-*- coding: utf-8 -*-
 from log import logger
+from SigObject import sigObject
+import signals
 import socket
 import threading
 
@@ -25,6 +27,7 @@ class TcpClient(threading.Thread):
         while 1:
             data = self.sock.recv(self.RECV_SIZE)
             if data == "":
+                sigObject.emit(signals.SIG_SERVER_CLOSED)
                 logger.error("socket closed")
                 break
             
