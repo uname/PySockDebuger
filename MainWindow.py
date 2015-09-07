@@ -22,3 +22,10 @@ class MainWindow(QtGui.QMainWindow):
             return
         
         createDialog.show()
+    
+    def onCreateTcpServerOK(self, address):
+        print "OK!"
+        
+    def closeEvent(self, e):
+        self.presenter.closeAllSockets()
+        e.accept()

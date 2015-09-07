@@ -22,7 +22,7 @@ class TcpServer(threading.Thread):
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, self.SNDBUF_SIZE)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.TCP_NODELAY, 1)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR , 1)
-        self.sock.settimeout(1)
+        self.sock.settimeout(0.1)
 
     def getAddress(self):
         return "%s:%d" % (self.ip, self.port)

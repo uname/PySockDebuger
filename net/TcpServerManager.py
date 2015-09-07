@@ -25,7 +25,7 @@ class TcpServerManager(object):
         return address
         
     def remove(self, address):
-        if not isinstanceof(address, basestring):
+        if not isinstance(address, basestring):
             return False
             
         tcpServer = self.serverDict.get(address)
@@ -37,5 +37,10 @@ class TcpServerManager(object):
         tcpServer.stop()
         tcpServer.join()
         del self.serverDict[address]
+   
+    def closeAllTcpSevrer(self):
+        for address, tcpServer in self.serverDict.items():
+            logger.debug("stopping %s ..." % address)
+            self.remove(address)
         
 tcpServerManager = TcpServerManager()

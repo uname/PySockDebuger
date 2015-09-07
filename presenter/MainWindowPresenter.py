@@ -5,6 +5,7 @@ import signals
 from log import logger
 from form.CreateTcpServerDialog import CreateTcpServerDialog
 from form.CreateTcpClientDialog import CreateTcpClientDialog
+from net.TcpServerManager import tcpServerManager
 
 class MainWindowPresenter(object):
     
@@ -42,3 +43,11 @@ class MainWindowPresenter(object):
     
     def onCreateTcpServer(self, port):
         logger.debug("create tcp server on %d" % port)
+        address = tcpServerManager.create(port)
+        if not address:
+            return
+        
+        self.window.onCreateTcpServerOK(address)
+    
+    def closeAllSockets(self):
+        tcpServerManager.closeAllTcpSevrer()
