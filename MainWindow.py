@@ -1,7 +1,9 @@
 #-*- coding: utf-8 -*-
 from PyQt4 import QtGui
 import config
+import error
 from ui.Ui_MainWindow import Ui_MainWindow
+from form.TipPupup import TipPupup
 from presenter.MainWindowPresenter import MainWindowPresenter
 
 class MainWindow(QtGui.QMainWindow):
@@ -10,6 +12,7 @@ class MainWindow(QtGui.QMainWindow):
         QtGui.QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.tipPupup = TipPupup()
         self.presenter = MainWindowPresenter(self)
         self.setupSignals()
         
@@ -23,9 +26,11 @@ class MainWindow(QtGui.QMainWindow):
         
         createDialog.show()
     
-    def onCreateTcpServerOK(self, address):
-        self.ui.sockTypeTree.addTcpServer(address)
-        print "OK!"
+    def onCreateTcpServerResult(self, address):
+        if address:
+            self.ui.sockTypeTree.addTcpServer(address)
+        else:
+            self.tipPupup.makeErrorText(error.TCP_CREATE_FAILED)
         
     def closeEvent(self, e):
         self.presenter.closeAllSockets()
