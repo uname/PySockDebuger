@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file '../ui/main_window.ui'
 #
-# Created by: PyQt4 UI code generator 4.11.4
+# Created: Tue Sep 08 17:37:03 2015
+#      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -11,16 +12,7 @@ from PyQt4 import QtCore, QtGui
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
-    def _fromUtf8(s):
-        return s
-
-try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+    _fromUtf8 = lambda s: s
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -51,8 +43,6 @@ class Ui_MainWindow(object):
         self.sockTypeTree.setGeometry(QtCore.QRect(10, 60, 171, 401))
         self.sockTypeTree.setStyleSheet(_fromUtf8(""))
         self.sockTypeTree.setObjectName(_fromUtf8("sockTypeTree"))
-        item_0 = QtGui.QTreeWidgetItem(self.sockTypeTree)
-        item_0 = QtGui.QTreeWidgetItem(self.sockTypeTree)
         self.sockTab = QtGui.QTabWidget(self.centralwidget)
         self.sockTab.setGeometry(QtCore.QRect(190, 60, 571, 401))
         self.sockTab.setObjectName(_fromUtf8("sockTab"))
@@ -76,16 +66,11 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(_translate("MainWindow", "PySockDebuger", None))
-        self.createBtn.setText(_translate("MainWindow", "创建", None))
-        self.removeBtn.setText(_translate("MainWindow", "删除", None))
-        self.aboutBtn.setText(_translate("MainWindow", "关于", None))
-        __sortingEnabled = self.sockTypeTree.isSortingEnabled()
-        self.sockTypeTree.setSortingEnabled(False)
-        self.sockTypeTree.topLevelItem(0).setText(0, _translate("MainWindow", "TCP服务器", None))
-        self.sockTypeTree.topLevelItem(1).setText(0, _translate("MainWindow", "TCP客户端", None))
-        self.sockTypeTree.setSortingEnabled(__sortingEnabled)
-        self.sockTab.setTabText(self.sockTab.indexOf(self.tab), _translate("MainWindow", "Tab 1", None))
-        self.sockTab.setTabText(self.sockTab.indexOf(self.tab_2), _translate("MainWindow", "Tab 2", None))
+        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "PySockDebuger", None, QtGui.QApplication.UnicodeUTF8))
+        self.createBtn.setText(QtGui.QApplication.translate("MainWindow", "创建", None, QtGui.QApplication.UnicodeUTF8))
+        self.removeBtn.setText(QtGui.QApplication.translate("MainWindow", "删除", None, QtGui.QApplication.UnicodeUTF8))
+        self.aboutBtn.setText(QtGui.QApplication.translate("MainWindow", "关于", None, QtGui.QApplication.UnicodeUTF8))
+        self.sockTab.setTabText(self.sockTab.indexOf(self.tab), QtGui.QApplication.translate("MainWindow", "Tab 1", None, QtGui.QApplication.UnicodeUTF8))
+        self.sockTab.setTabText(self.sockTab.indexOf(self.tab_2), QtGui.QApplication.translate("MainWindow", "Tab 2", None, QtGui.QApplication.UnicodeUTF8))
 
 from view.SockTreeWidget import SockTreeWidget

@@ -89,16 +89,6 @@
       <string/>
      </property>
     </column>
-    <item>
-     <property name="text">
-      <string>TCP服务器</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>TCP客户端</string>
-     </property>
-    </item>
    </widget>
    <widget class="QTabWidget" name="sockTab">
     <property name="geometry">

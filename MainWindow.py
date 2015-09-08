@@ -11,10 +11,14 @@ class MainWindow(QtGui.QMainWindow):
     def __init__(self):
         QtGui.QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
+        self.setupUi()
         self.tipPupup = TipPupup()
         self.presenter = MainWindowPresenter(self)
         self.setupSignals()
+    
+    def setupUi(self):
+        self.ui.setupUi(self)
+        self.ui.sockTypeTree.init()
         
     def setupSignals(self):
         self.ui.createBtn.clicked.connect(self.onCreateBtnClicked)
