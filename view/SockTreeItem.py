@@ -10,8 +10,8 @@ class SockTreeItem(QTreeWidgetItem):
         if icon:
             self.setIcon(0, QIcon(icon))
             
+    def getBaseSockType(self):
+        return self.getSockType() & 0xf0
+    
     def getSockType(self):
-        return self.sockType & 0xf0
-        
-    
-    
+        return self.sockType

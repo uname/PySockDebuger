@@ -72,7 +72,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="SockTreeWidget" name="sockTypeTree">
+   <widget class="SockTreeWidget" name="sockTree">
     <property name="geometry">
      <rect>
       <x>10</x>

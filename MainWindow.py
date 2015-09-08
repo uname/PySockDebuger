@@ -18,21 +18,27 @@ class MainWindow(QtGui.QMainWindow):
     
     def setupUi(self):
         self.ui.setupUi(self)
-        self.ui.sockTypeTree.init()
+        self.ui.sockTree.init()
         
     def setupSignals(self):
         self.ui.createBtn.clicked.connect(self.onCreateBtnClicked)
+        self.ui.removeBtn.clicked.connect(self.onRemoveBtnClicked)
         
     def onCreateBtnClicked(self):
-        createDialog = self.presenter.getCreateDialog(self.ui.sockTypeTree.currentItem())
+        createDialog = self.presenter.getCreateDialog(self.ui.sockTree.currentItem())
         if createDialog is None:
             return
         
         createDialog.show()
     
+    def onRemoveBtnClicked(self):
+        sockItem = self.ui.sockTree.currentSockItem()
+        self.presenter.removeSocket(sockItem)
+        self.ui.sockTree.removeSocketItem(sockItem)
+        
     def onCreateTcpServerResult(self, address):
         if address:
-            self.ui.sockTypeTree.addTcpServer(address)
+            self.ui.sockTree.addTcpServer(address)
         else:
             self.tipPupup.makeErrorText(error.TCP_CREATE_FAILED)
         

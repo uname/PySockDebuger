@@ -20,15 +20,34 @@ class SockTreeWidget(QTreeWidget):
         self.addTopLevelItem (tcpServerEntry)
         self.addTopLevelItem (tcpClientEntry)
         self.setCurrentItem(tcpServerEntry)
+    
+    def getBaseTcpServerItem(self):
+        n = self.topLevelItemCount()
+        if n < 1:
+            logger.error("top level item count is 0!!")
+            return
+        
+        sockItem = None
+        for i in xrange(n):
+            sockItem = self.topLevelItem(i)
+            if sockItem.getBaseSockType() == socktypes.TCP_SERVER_BASE_TYPE:
+                break
+        
+        return sockItem
         
     def addTcpServer(self, address):
-        curItem = self.currentItem()
-        if not curItem:
+        tcpServerItem = self.getBaseTcpServerItem()
+        if not tcpServerItem:
             logger.error("currentItem is None")
             return
             
         item = SockTreeItem(socktypes.TCP_CLIENT_REMOTE, address, config.TCP_SERVER_ICON)
-        curItem.addChild(item)
-        self.setItemExpanded(curItem, True)
+        tcpServerItem.addChild(item)
+        self.setItemExpanded(tcpServerItem, True)
         self.setCurrentItem(item)
+    
+    def currentSockItem(self):
+        return self.currentItem()
         
+    def removeSocketItem(self, sockItem):
+        sockType = sockItem.getSockType()
