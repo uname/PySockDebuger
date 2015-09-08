@@ -53,4 +53,9 @@ class SockTreeWidget(QTreeWidget):
         return self.currentItem()
         
     def removeSocketItem(self, sockItem):
-        sockType = sockItem.getSockType()
+        parent = sockItem.parent()
+        if parent is None:
+            return
+            
+        parent.removeChild(sockItem)
+        

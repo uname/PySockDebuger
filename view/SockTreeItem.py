@@ -17,3 +17,6 @@ class SockTreeItem(QTreeWidgetItem):
     
     def getSockType(self):
         return self.sockType
+    
+    def getId(self):
+        return self._id

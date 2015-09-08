@@ -38,5 +38,6 @@ class MainWindowPresenter(object):
     def closeAllSockets(self):
         tcpServerManager.closeAllTcpSevrer()
     
-    def removeSocket(self, sock):
-        pass
+    def removeSocket(self, sockItem):
+        _id = sockItem.getId()
+        tcpServerManager.remove(_id)

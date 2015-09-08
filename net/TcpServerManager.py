@@ -37,6 +37,7 @@ class TcpServerManager(object):
         tcpServer.stop()
         tcpServer.join()
         del self.serverDict[_id]
+        logger.info("removed")
    
     def closeAllTcpSevrer(self):
         for _id, tcpServer in self.serverDict.items():
