@@ -19,6 +19,12 @@ class TcpClient(threading.Thread):
             return False
         
         return self.sock.sendall(data) is None
+    
+    def close(self):
+        if self.sock is None:
+            return
+        
+        self.sock.close()
         
     def run(self):
         if self.sock is None:

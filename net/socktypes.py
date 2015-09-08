@@ -1,0 +1,7 @@
+#-*- coding: utf-8 -*-
+TCP_SERVER = 0
+TCP_CLIENT_REMOTE = 1
+TCP_CLIENT_LOCAL = 2
+UDP_SERVER = 3 # it's just like a sever
+UDP_CLIENT_REMOTE = 4
+UDP_CLIENT_LOCAL = 5

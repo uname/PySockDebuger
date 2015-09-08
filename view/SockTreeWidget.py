@@ -1,10 +1,11 @@
 #-*- coding: utf-8 -*-
 from log import logger
 from ui.AppIcons import *
+from SockTreeItem import SockTreeItem
 import config
-from PyQt4.QtGui import ( QTreeWidget,
-                          QTreeWidgetItem,
-                          QIcon)
+from PyQt4.QtGui import (
+    QTreeWidget,
+    QIcon )
 
 class SockTreeWidget(QTreeWidget):
     
@@ -17,7 +18,7 @@ class SockTreeWidget(QTreeWidget):
             logger.error("currentItem is None")
             return
             
-        item = QTreeWidgetItem()
+        item = SockTreeItem()
         item.setText(0, address)
         item.setIcon(0, QIcon(config.TCP_SERVER_ICON))
         curItem.addChild(item)

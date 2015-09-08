@@ -32,7 +32,7 @@ class TcpServer(threading.Thread):
             self.sock.bind((self.ip, self.port))
             self.sock.listen(self.BACKLOG)
             logger.debug("TCP server bind on %s:%d success" % (self.ip, self.port))
-        except sock.error:
+        except socket.error:
             logger.error("TCP server bind on %s:%d error" % (self.ip, self.port))
             return
         
@@ -42,6 +42,10 @@ class TcpServer(threading.Thread):
         
     def stop(self):
         self.stopflag = True
+    
+    def removeAllClients(self):
+        for tcpClient in self.tcpClients:
+            tcpClient.close()
         
     def run(self):
         while not self.stopflag:
