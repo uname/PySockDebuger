@@ -32,8 +32,8 @@ class MainWindowPresenter(object):
     
     def onCreateTcpServer(self, port):
         logger.debug("create tcp server on %d" % port)
-        address = tcpServerManager.create(port)
-        self.window.onCreateTcpServerResult(address)
+        _id, address = tcpServerManager.create(port)
+        self.window.onCreateTcpServerResult(_id, address)
     
     def closeAllSockets(self):
         tcpServerManager.closeAllTcpSevrer()

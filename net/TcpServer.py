@@ -15,15 +15,22 @@ class TcpServer(threading.Thread):
     def __init__(self, port, ip="0.0.0.0"):
         threading.Thread.__init__(self)
         self.ip, self.port = ip, port
+        
         self.tcpClients = []
         self.stopflag = False
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, self.RCVBUF_SIZE)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, self.SNDBUF_SIZE)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.TCP_NODELAY, 1)
-        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR , 1)
+        #self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR , 1) # do not turn on SO_REUSEADDR
         self.sock.settimeout(0.1)
+        
+        self._id = id(self.sock)
 
+    def getId(self):
+        logger.debug("id: %d" % self._id)
+        return self._id
+        
     def getAddress(self):
         return "%s:%d" % (self.ip, self.port)
     
@@ -34,7 +41,7 @@ class TcpServer(threading.Thread):
             logger.debug("TCP server bind on %s:%d success" % (self.ip, self.port))
         except socket.error:
             logger.error("TCP server bind on %s:%d error" % (self.ip, self.port))
-            return
+            return False
         
         self.start()
         
@@ -49,7 +56,7 @@ class TcpServer(threading.Thread):
         
     def run(self):
         while not self.stopflag:
-            logger.debug("waiting for client...")
+            #logger.debug("waiting for client...")
             try:
                 client, addr = self.sock.accept()
                 logger.debug("new client %s:%d connected" % addr)

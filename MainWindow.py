@@ -36,9 +36,9 @@ class MainWindow(QtGui.QMainWindow):
         self.presenter.removeSocket(sockItem)
         self.ui.sockTree.removeSocketItem(sockItem)
         
-    def onCreateTcpServerResult(self, address):
-        if address:
-            self.ui.sockTree.addTcpServer(address)
+    def onCreateTcpServerResult(self, _id, address):
+        if _id != 0:
+            self.ui.sockTree.addTcpServer(_id, address)
         else:
             self.tipPupup.makeErrorText(error.TCP_CREATE_FAILED)
         

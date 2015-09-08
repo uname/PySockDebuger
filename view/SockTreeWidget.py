@@ -38,13 +38,13 @@ class SockTreeWidget(QTreeWidget):
     def getBaseTcpClientItem(self):
         pass
         
-    def addTcpServer(self, address):
+    def addTcpServer(self, id, address):
         tcpServerItem = self.getBaseTcpServerItem()
         if not tcpServerItem:
             logger.error("currentItem is None")
             return
             
-        item = SockTreeItem(socktypes.TCP_CLIENT_REMOTE, address, config.TCP_SERVER_ICON)
+        item = SockTreeItem(socktypes.TCP_CLIENT_REMOTE, address, id, config.TCP_SERVER_ICON)
         tcpServerItem.addChild(item)
         self.setItemExpanded(tcpServerItem, True)
         self.setCurrentItem(item)
