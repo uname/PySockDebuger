@@ -34,6 +34,9 @@ class SockTreeWidget(QTreeWidget):
                 break
         
         return sockItem
+   
+    def getBaseTcpClientItem(self):
+        pass
         
     def addTcpServer(self, address):
         tcpServerItem = self.getBaseTcpServerItem()
