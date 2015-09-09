@@ -25,9 +25,6 @@ class TcpServerManager(object):
         return _id, tcpServer.getAddress()
         
     def remove(self, _id):
-        if not isinstance(_id, long):
-            return False
-            
         tcpServer = self.serverDict.get(_id)
         if tcpServer is None:
             logger.error("no such tcp server")
