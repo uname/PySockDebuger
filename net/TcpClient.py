@@ -3,6 +3,7 @@ from log import logger
 from SigObject import sigObject
 import signals
 import socket
+import select
 import threading
 
 class TcpClient(threading.Thread):
@@ -11,7 +12,9 @@ class TcpClient(threading.Thread):
     
     def __init__(self, sock, addr):
         threading.Thread.__init__(self)
+        self.stopflag = False
         self.sock = sock
+        self.sock.setblocking(0)
         self.ip, self.port = addr[0:]
     
     def sendall(self, data):
@@ -25,12 +28,24 @@ class TcpClient(threading.Thread):
             return
         
         self.sock.close()
+    
+    def stop(self):
+        self.stopflag = True
         
     def run(self):
         if self.sock is None:
             return
-        
-        while 1:
+            
+        while not self.stopflag:
+            rfds, _, efds = select.select([self.sock], [], [self.sock], 0.5)
+            if len(efds) > 0:
+                logger.error("remote client error")
+                # TODO: signal
+                break
+                
+            if len(rfds) < 1:
+                continue
+                
             data = self.sock.recv(self.RECV_SIZE)
             if data == "":
                 sigObject.emit(signals.SIG_SERVER_CLOSED)
@@ -38,3 +53,7 @@ class TcpClient(threading.Thread):
                 break
             
             logger.debug("data from %s:%d -> %s" % (self.ip, self.port, data))
+        
+        self.sock.close()
+        logger.debug("tcp client stopped")
+        # TODO: signal

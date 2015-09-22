@@ -48,17 +48,19 @@ class TcpServer(threading.Thread):
         return True
         
     def stop(self):
+        self.removeAllClients()
         self.stopflag = True
     
     def removeAllClients(self):
         for tcpClient in self.tcpClients:
-            tcpClient.close()
+            tcpClient.stop()
         
     def run(self):
         while not self.stopflag:
             #logger.debug("waiting for client...")
             try:
                 client, addr = self.sock.accept()
+                sigObject.emit(signals.SIG_REMOTE_TCP_CLIENT_CONNECTED, self._id)
                 logger.debug("new client %s:%d connected" % addr)
                 tcpClient = TcpClient(client, addr)
                 tcpClient.start()
