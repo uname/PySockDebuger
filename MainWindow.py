@@ -2,8 +2,10 @@
 from PyQt4 import QtGui
 import config
 import error
+import signals
 from ui.Ui_MainWindow import Ui_MainWindow
 from form.TipPupup import TipPupup
+from SigObject import sigObject
 from presenter.MainWindowPresenter import MainWindowPresenter
 
 class MainWindow(QtGui.QMainWindow):
@@ -23,6 +25,10 @@ class MainWindow(QtGui.QMainWindow):
     def setupSignals(self):
         self.ui.createBtn.clicked.connect(self.onCreateBtnClicked)
         self.ui.removeBtn.clicked.connect(self.onRemoveBtnClicked)
+        self.connect(sigObject, signals.SIG_REMOTE_TCP_CLIENT_CONNECTED, self.onRemoteTcpClientConnected)
+    
+    def onRemoteTcpClientConnected(self, serverId, _id, address, port):
+        self.ui.sockTree.addRemoteTcpClient(serverId, _id, address, port)
         
     def onCreateBtnClicked(self):
         createDialog = self.presenter.getCreateDialog(self.ui.sockTree.currentItem())
@@ -43,5 +49,5 @@ class MainWindow(QtGui.QMainWindow):
             self.tipPupup.makeErrorText(error.TCP_CREATE_FAILED)
         
     def closeEvent(self, e):
-        self.presenter.closeAllSockets()
+        self.presenter.removeAllSockets()
         e.accept()

@@ -16,8 +16,8 @@ class SockTreeWidget(QTreeWidget):
         self.sockItemDict = {}
     
     def init(self):
-        tcpServerEntry = SockTreeItem(socktypes.TCP_SERVER, config.TCP_SERVER_ENTRY_TEXT)
-        tcpClientEntry = SockTreeItem(socktypes.TCP_CLIENT_LOCAL, config.TCP_CLIENT_ENTRY_TEXT)
+        tcpServerEntry = SockTreeItem(socktypes.TCP_SERVER, config.TCP_SERVER_ENTRY_TEXT, config.TCP_SERVER_ROOT_ID)
+        tcpClientEntry = SockTreeItem(socktypes.TCP_CLIENT_LOCAL, config.TCP_CLIENT_ENTRY_TEXT, config.TCP_CLIENT_ROOT_ID)
         self.addTopLevelItem (tcpServerEntry)
         self.addTopLevelItem (tcpClientEntry)
         self.setCurrentItem(tcpServerEntry)
@@ -38,14 +38,26 @@ class SockTreeWidget(QTreeWidget):
    
     def getBaseTcpClientItem(self):
         pass
+    
+    def addRemoteTcpClient(self, serverId, _id, address, port):
+        parentItem = self.getSockItemById(serverId)
+        if parentItem is None:
+            logger.error("parentItem is None")
+            return
         
+        item = SockTreeItem(socktypes.TCP_CLIENT_REMOTE, "%s:%d" % (address, port), _id, config.TCP_CLIENT_ICON)
+        self.sockItemDict[_id] = item
+        parentItem.addChild(item)
+        self.setItemExpanded(parentItem, True)
+        self.setCurrentItem(item)
+
     def addTcpServer(self, _id, address):
         tcpServerItem = self.getBaseTcpServerItem()
         if not tcpServerItem:
             logger.error("currentItem is None")
             return
             
-        item = SockTreeItem(socktypes.TCP_CLIENT_REMOTE, address, _id, config.TCP_SERVER_ICON)
+        item = SockTreeItem(socktypes.TCP_SERVER, address, _id, config.TCP_SERVER_ICON)
         self.sockItemDict[_id] = item
         tcpServerItem.addChild(item)
         self.setItemExpanded(tcpServerItem, True)

@@ -10,9 +10,11 @@ class TcpClient(threading.Thread):
     
     RECV_SIZE = 1024
     
-    def __init__(self, sock, addr):
+    def __init__(self, parentId, sock, addr):
         threading.Thread.__init__(self)
         self.stopflag = False
+        self.parentId = parentId
+        self._id = id(self)
         self.sock = sock
         self.sock.setblocking(0)
         self.ip, self.port = addr[0:]
@@ -23,6 +25,9 @@ class TcpClient(threading.Thread):
         
         return self.sock.sendall(data) is None
     
+    def getId(self):
+        return self._id
+        
     def close(self):
         if self.sock is None:
             return

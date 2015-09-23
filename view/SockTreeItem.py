@@ -15,6 +15,13 @@ class SockTreeItem(QTreeWidgetItem):
     def getBaseSockType(self):
         return self.getSockType() & 0xf0
     
+    def getParentId(self):
+        parent = self.parent()
+        if parent is None:
+            return 0
+        
+        return parent.getId()
+        
     def getSockType(self):
         return self.sockType
     

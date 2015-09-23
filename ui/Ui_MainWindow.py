@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/main_window.ui'
 #
-# Created: Tue Sep 08 19:11:48 2015
+# Created: Wed Sep 23 11:30:53 2015
 #      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -40,11 +40,12 @@ class Ui_MainWindow(object):
         self.aboutBtn.setObjectName(_fromUtf8("aboutBtn"))
         self.gridLayout.addWidget(self.aboutBtn, 0, 3, 1, 1)
         self.sockTree = SockTreeWidget(self.centralwidget)
-        self.sockTree.setGeometry(QtCore.QRect(10, 60, 171, 401))
+        self.sockTree.setGeometry(QtCore.QRect(10, 60, 201, 401))
+        self.sockTree.setMinimumSize(QtCore.QSize(201, 0))
         self.sockTree.setStyleSheet(_fromUtf8(""))
         self.sockTree.setObjectName(_fromUtf8("sockTree"))
         self.sockTab = QtGui.QTabWidget(self.centralwidget)
-        self.sockTab.setGeometry(QtCore.QRect(190, 60, 571, 401))
+        self.sockTab.setGeometry(QtCore.QRect(220, 60, 541, 401))
         self.sockTab.setObjectName(_fromUtf8("sockTab"))
         self.tab = QtGui.QWidget()
         self.tab.setObjectName(_fromUtf8("tab"))

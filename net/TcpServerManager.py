@@ -24,7 +24,7 @@ class TcpServerManager(object):
         
         return _id, tcpServer.getAddress()
         
-    def remove(self, _id):
+    def removeServer(self, _id):
         tcpServer = self.serverDict.get(_id)
         if tcpServer is None:
             logger.error("no such tcp server")
@@ -36,9 +36,16 @@ class TcpServerManager(object):
         del self.serverDict[_id]
         logger.info("removed")
    
-    def closeAllTcpSevrer(self):
+    def removeRemoteClient(self, parentId, remoteClientId):
+        tcpServer = self.serverDict.get(parentId)
+        if tcpServer:
+            tcpServer.removeClientById(remoteClientId)
+        else:
+            logger.error("tcpServer is None")
+            
+    def removeAllTcpSevrer(self):
         for _id, tcpServer in self.serverDict.items():
             logger.debug("stopping %s ..." % _id)
-            self.remove(_id)
+            self.removeServer(_id)
         
 tcpServerManager = TcpServerManager()

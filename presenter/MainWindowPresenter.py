@@ -35,9 +35,19 @@ class MainWindowPresenter(object):
         _id, address = tcpServerManager.create(port)
         self.window.onCreateTcpServerResult(_id, address)
     
-    def closeAllSockets(self):
-        tcpServerManager.closeAllTcpSevrer()
+    def removeAllSockets(self):
+        tcpServerManager.removeAllTcpSevrer()
+        # TODO: remove others
     
     def removeSocket(self, sockItem):
         _id = sockItem.getId()
-        tcpServerManager.remove(_id)
+        parentId = sockItem.getParentId()
+        sockType = sockItem.getSockType()
+        logger.debug("sockType --> %d" % sockType)
+        if sockType == socktypes.TCP_CLIENT_REMOTE:
+            tcpServerManager.removeRemoteClient(parentId, _id)
+            
+        elif sockType == socktypes.TCP_SERVER:
+            tcpServerManager.removeServer(_id)
+        else:
+            pass

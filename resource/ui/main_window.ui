@@ -77,9 +77,15 @@
      <rect>
       <x>10</x>
       <y>60</y>
-      <width>171</width>
+      <width>201</width>
       <height>401</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>201</width>
+      <height>0</height>
+     </size>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
@@ -93,9 +99,9 @@
    <widget class="QTabWidget" name="sockTab">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>220</x>
       <y>60</y>
-      <width>571</width>
+      <width>541</width>
       <height>401</height>
      </rect>
     </property>
