@@ -59,4 +59,5 @@ class TcpClient(threading.Thread):
         
         self.sock.close()
         logger.debug("tcp client stopped")
-        sigObject.emit(signals.SIG_REMOTE_CLOSED, self.getId(), self.parentId)
+        if not self.stopflag:
+            sigObject.emit(signals.SIG_REMOTE_CLOSED, self.getId(), self.parentId)

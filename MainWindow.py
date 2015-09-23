@@ -3,6 +3,7 @@ from PyQt4 import QtGui
 import config
 import error
 import signals
+from log import logger
 from ui.Ui_MainWindow import Ui_MainWindow
 from form.TipPupup import TipPupup
 from SigObject import sigObject
@@ -29,6 +30,7 @@ class MainWindow(QtGui.QMainWindow):
         self.connect(sigObject, signals.SIG_REMOTE_CLOSED, self.onRemoteClosed)
     
     def onRemoteClosed(self, _id, parentId):
+        logger.debug("REMOTE CLOSED")
         self.ui.sockTree.removeSocketItemById(_id)
         self.presenter.removeRemoteTcpClientById(_id, parentId)
         

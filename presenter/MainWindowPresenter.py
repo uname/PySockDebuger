@@ -46,7 +46,7 @@ class MainWindowPresenter(object):
         _id = sockItem.getId()
         parentId = sockItem.getParentId()
         sockType = sockItem.getSockType()
-        logger.debug("sockType --> %d" % sockType)
+        logger.debug("sockType --> %d, _id=%d, parentId=%d" % (sockType, _id, parentId))
         if sockType == socktypes.TCP_CLIENT_REMOTE:
             tcpServerManager.removeRemoteClient(_id, parentId)
             
