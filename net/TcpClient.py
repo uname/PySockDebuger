@@ -45,7 +45,6 @@ class TcpClient(threading.Thread):
             rfds, _, efds = select.select([self.sock], [], [self.sock], 0.5)
             if len(efds) > 0:
                 logger.error("remote client error")
-                # TODO: signal
                 break
                 
             if len(rfds) < 1:
@@ -53,7 +52,6 @@ class TcpClient(threading.Thread):
                 
             data = self.sock.recv(self.RECV_SIZE)
             if data == "":
-                sigObject.emit(signals.SIG_SERVER_CLOSED)
                 logger.error("socket closed")
                 break
             
@@ -61,4 +59,4 @@ class TcpClient(threading.Thread):
         
         self.sock.close()
         logger.debug("tcp client stopped")
-        # TODO: signal
+        sigObject.emit(signals.SIG_REMOTE_CLOSED, self.getId(), self.parentId)

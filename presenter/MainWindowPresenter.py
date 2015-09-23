@@ -39,13 +39,16 @@ class MainWindowPresenter(object):
         tcpServerManager.removeAllTcpSevrer()
         # TODO: remove others
     
+    def removeRemoteTcpClientById(self, _id, parentId):
+        tcpServerManager.removeRemoteClient(_id, parentId)
+        
     def removeSocket(self, sockItem):
         _id = sockItem.getId()
         parentId = sockItem.getParentId()
         sockType = sockItem.getSockType()
         logger.debug("sockType --> %d" % sockType)
         if sockType == socktypes.TCP_CLIENT_REMOTE:
-            tcpServerManager.removeRemoteClient(parentId, _id)
+            tcpServerManager.removeRemoteClient(_id, parentId)
             
         elif sockType == socktypes.TCP_SERVER:
             tcpServerManager.removeServer(_id)

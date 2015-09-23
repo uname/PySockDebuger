@@ -26,7 +26,12 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.createBtn.clicked.connect(self.onCreateBtnClicked)
         self.ui.removeBtn.clicked.connect(self.onRemoveBtnClicked)
         self.connect(sigObject, signals.SIG_REMOTE_TCP_CLIENT_CONNECTED, self.onRemoteTcpClientConnected)
+        self.connect(sigObject, signals.SIG_REMOTE_CLOSED, self.onRemoteClosed)
     
+    def onRemoteClosed(self, _id, parentId):
+        self.ui.sockTree.removeSocketItemById(_id)
+        self.presenter.removeRemoteTcpClientById(_id, parentId)
+        
     def onRemoteTcpClientConnected(self, serverId, _id, address, port):
         self.ui.sockTree.addRemoteTcpClient(serverId, _id, address, port)
         

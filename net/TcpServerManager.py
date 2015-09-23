@@ -36,7 +36,7 @@ class TcpServerManager(object):
         del self.serverDict[_id]
         logger.info("removed")
    
-    def removeRemoteClient(self, parentId, remoteClientId):
+    def removeRemoteClient(self, remoteClientId, parentId):
         tcpServer = self.serverDict.get(parentId)
         if tcpServer:
             tcpServer.removeClientById(remoteClientId)

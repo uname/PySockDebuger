@@ -75,4 +75,12 @@ class SockTreeWidget(QTreeWidget):
             return
             
         parent.removeChild(sockItem)
+    
+    def removeSocketItemById(self, _id):
+        sockItem = self.sockItemDict.get(_id)
+        if sockItem is None:
+            logger.error("sockItem is None, _id = %d" % _id)
+            return
+        
+        self.removeSocketItem(sockItem)
         
