@@ -75,7 +75,6 @@ class TcpServer(threading.Thread):
                 logger.debug("new client %s:%d connected" % addr)
                 tcpClient.start()
                 self.tcpClients[tcpClient.getId()] = tcpClient
-                print self.tcpClients
             
             except socket.timeout:
                 pass
