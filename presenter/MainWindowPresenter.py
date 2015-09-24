@@ -44,6 +44,9 @@ class MainWindowPresenter(object):
         
     def removeSocket(self, sockItem):
         _id = sockItem.getId()
+        if _id < 0:
+            return
+            
         parentId = sockItem.getParentId()
         sockType = sockItem.getSockType()
         logger.debug("sockType --> %d, _id=%d, parentId=%d" % (sockType, _id, parentId))
