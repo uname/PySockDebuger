@@ -26,6 +26,7 @@ class MainWindow(QtGui.QMainWindow):
     def setupSignals(self):
         self.ui.createBtn.clicked.connect(self.onCreateBtnClicked)
         self.ui.removeBtn.clicked.connect(self.onRemoveBtnClicked)
+        self.ui.githubBtn.clicked.connect(self.onGithubBtnClicked)
         self.connect(sigObject, signals.SIG_REMOTE_TCP_CLIENT_CONNECTED, self.onRemoteTcpClientConnected)
         self.connect(sigObject, signals.SIG_REMOTE_CLOSED, self.onRemoteClosed)
     
@@ -44,6 +45,9 @@ class MainWindow(QtGui.QMainWindow):
         
         createDialog.show()
     
+    def onGithubBtnClicked(self):
+        self.presenter.openGithubSite()
+        
     def onRemoveBtnClicked(self):
         sockItem = self.ui.sockTree.currentSockItem()
         self.presenter.removeSocket(sockItem)

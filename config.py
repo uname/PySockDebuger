@@ -1,4 +1,5 @@
 #-*- coding: utf-8 -*-
+GITHUB_HOME           = "https://github.com/uname/PySockDebuger"
 TCP_SERVER_ENTRY_TEXT = u"TCP服务器"
 TCP_CLIENT_ENTRY_TEXT = u"TCP客户端"
 

@@ -2,6 +2,7 @@
 import utils
 import config
 import signals
+from webbrowser import open as openweb
 from log import logger
 from form.CreateTcpServerDialog import CreateTcpServerDialog
 from form.CreateTcpClientDialog import CreateTcpClientDialog
@@ -57,3 +58,7 @@ class MainWindowPresenter(object):
             tcpServerManager.removeServer(_id)
         else:
             pass
+            
+    def openGithubSite(self):
+        openweb(config.GITHUB_HOME)
+        
