@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/socket_form.ui'
 #
-# Created: Fri Sep 25 14:26:00 2015
+# Created: Fri Sep 25 15:39:21 2015
 #      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -32,8 +32,44 @@ class Ui_SocketForm(object):
         self.gridLayout.addWidget(self.splitter, 0, 0, 1, 1)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.label = QtGui.QLabel(SocketForm)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.horizontalLayout.addWidget(self.label)
+        self.rxLcdNumber = QtGui.QLCDNumber(SocketForm)
+        self.rxLcdNumber.setObjectName(_fromUtf8("rxLcdNumber"))
+        self.horizontalLayout.addWidget(self.rxLcdNumber)
+        self.label_2 = QtGui.QLabel(SocketForm)
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.horizontalLayout.addWidget(self.label_2)
+        self.txLcdNumber = QtGui.QLCDNumber(SocketForm)
+        self.txLcdNumber.setObjectName(_fromUtf8("txLcdNumber"))
+        self.horizontalLayout.addWidget(self.txLcdNumber)
+        self.resetBytesBtn = QtGui.QPushButton(SocketForm)
+        self.resetBytesBtn.setObjectName(_fromUtf8("resetBytesBtn"))
+        self.horizontalLayout.addWidget(self.resetBytesBtn)
+        self.label_3 = QtGui.QLabel(SocketForm)
+        self.label_3.setMaximumSize(QtCore.QSize(54, 16777215))
+        self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.horizontalLayout.addWidget(self.label_3)
+        self.repeatTimesCbx = QtGui.QComboBox(SocketForm)
+        self.repeatTimesCbx.setMaximumSize(QtCore.QSize(102, 16777215))
+        self.repeatTimesCbx.setEditable(True)
+        self.repeatTimesCbx.setObjectName(_fromUtf8("repeatTimesCbx"))
+        self.repeatTimesCbx.addItem(_fromUtf8(""))
+        self.repeatTimesCbx.addItem(_fromUtf8(""))
+        self.repeatTimesCbx.addItem(_fromUtf8(""))
+        self.repeatTimesCbx.addItem(_fromUtf8(""))
+        self.repeatTimesCbx.addItem(_fromUtf8(""))
+        self.repeatTimesCbx.addItem(_fromUtf8(""))
+        self.horizontalLayout.addWidget(self.repeatTimesCbx)
+        self.hexModeCkb = QtGui.QCheckBox(SocketForm)
+        self.hexModeCkb.setObjectName(_fromUtf8("hexModeCkb"))
+        self.horizontalLayout.addWidget(self.hexModeCkb)
         spacerItem = QtGui.QSpacerItem(608, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
+        self.pushButton = QtGui.QPushButton(SocketForm)
+        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.horizontalLayout.addWidget(self.pushButton)
         self.sendBtn = QtGui.QPushButton(SocketForm)
         self.sendBtn.setObjectName(_fromUtf8("sendBtn"))
         self.horizontalLayout.addWidget(self.sendBtn)
@@ -44,5 +80,17 @@ class Ui_SocketForm(object):
 
     def retranslateUi(self, SocketForm):
         SocketForm.setWindowTitle(QtGui.QApplication.translate("SocketForm", "Form", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("SocketForm", "Rx", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("SocketForm", "Tx", None, QtGui.QApplication.UnicodeUTF8))
+        self.resetBytesBtn.setText(QtGui.QApplication.translate("SocketForm", "清零", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setText(QtGui.QApplication.translate("SocketForm", "重复发送", None, QtGui.QApplication.UnicodeUTF8))
+        self.repeatTimesCbx.setItemText(0, QtGui.QApplication.translate("SocketForm", "1", None, QtGui.QApplication.UnicodeUTF8))
+        self.repeatTimesCbx.setItemText(1, QtGui.QApplication.translate("SocketForm", "10", None, QtGui.QApplication.UnicodeUTF8))
+        self.repeatTimesCbx.setItemText(2, QtGui.QApplication.translate("SocketForm", "100", None, QtGui.QApplication.UnicodeUTF8))
+        self.repeatTimesCbx.setItemText(3, QtGui.QApplication.translate("SocketForm", "1000", None, QtGui.QApplication.UnicodeUTF8))
+        self.repeatTimesCbx.setItemText(4, QtGui.QApplication.translate("SocketForm", "10000", None, QtGui.QApplication.UnicodeUTF8))
+        self.repeatTimesCbx.setItemText(5, QtGui.QApplication.translate("SocketForm", "100000", None, QtGui.QApplication.UnicodeUTF8))
+        self.hexModeCkb.setText(QtGui.QApplication.translate("SocketForm", "十六进制模式", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton.setText(QtGui.QApplication.translate("SocketForm", "清空", None, QtGui.QApplication.UnicodeUTF8))
         self.sendBtn.setText(QtGui.QApplication.translate("SocketForm", "发送", None, QtGui.QApplication.UnicodeUTF8))
 
