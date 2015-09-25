@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/main_window.ui'
 #
-# Created: Fri Sep 25 14:27:27 2015
+# Created: Fri Sep 25 14:53:27 2015
 #      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -20,26 +20,6 @@ class Ui_MainWindow(object):
         MainWindow.resize(985, 664)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.frame = QtGui.QFrame(self.centralwidget)
-        self.frame.setGeometry(QtCore.QRect(10, 10, 754, 43))
-        self.frame.setMaximumSize(QtCore.QSize(761, 16777215))
-        self.frame.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtGui.QFrame.Raised)
-        self.frame.setObjectName(_fromUtf8("frame"))
-        self.gridLayout = QtGui.QGridLayout(self.frame)
-        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        self.createBtn = QtGui.QPushButton(self.frame)
-        self.createBtn.setObjectName(_fromUtf8("createBtn"))
-        self.gridLayout.addWidget(self.createBtn, 0, 0, 1, 1)
-        self.removeBtn = QtGui.QPushButton(self.frame)
-        self.removeBtn.setObjectName(_fromUtf8("removeBtn"))
-        self.gridLayout.addWidget(self.removeBtn, 0, 1, 1, 1)
-        spacerItem = QtGui.QSpacerItem(488, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem, 0, 2, 1, 1)
-        self.githubBtn = QtGui.QPushButton(self.frame)
-        self.githubBtn.setMaximumSize(QtCore.QSize(121, 16777215))
-        self.githubBtn.setObjectName(_fromUtf8("githubBtn"))
-        self.gridLayout.addWidget(self.githubBtn, 0, 3, 1, 1)
         self.sockTree = SockTreeWidget(self.centralwidget)
         self.sockTree.setGeometry(QtCore.QRect(10, 60, 231, 541))
         self.sockTree.setMinimumSize(QtCore.QSize(201, 0))
@@ -55,6 +35,24 @@ class Ui_MainWindow(object):
         self.textEdit.setFrameShape(QtGui.QFrame.NoFrame)
         self.textEdit.setObjectName(_fromUtf8("textEdit"))
         self.sockTab.addTab(self.tab, _fromUtf8(""))
+        self.widget = QtGui.QWidget(self.centralwidget)
+        self.widget.setGeometry(QtCore.QRect(10, 20, 961, 25))
+        self.widget.setObjectName(_fromUtf8("widget"))
+        self.horizontalLayout = QtGui.QHBoxLayout(self.widget)
+        self.horizontalLayout.setMargin(0)
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.createBtn = QtGui.QPushButton(self.widget)
+        self.createBtn.setObjectName(_fromUtf8("createBtn"))
+        self.horizontalLayout.addWidget(self.createBtn)
+        self.removeBtn = QtGui.QPushButton(self.widget)
+        self.removeBtn.setObjectName(_fromUtf8("removeBtn"))
+        self.horizontalLayout.addWidget(self.removeBtn)
+        spacerItem = QtGui.QSpacerItem(668, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.githubBtn = QtGui.QPushButton(self.widget)
+        self.githubBtn.setMaximumSize(QtCore.QSize(121, 16777215))
+        self.githubBtn.setObjectName(_fromUtf8("githubBtn"))
+        self.horizontalLayout.addWidget(self.githubBtn)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 985, 23))
@@ -70,9 +68,6 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "PySockDebuger", None, QtGui.QApplication.UnicodeUTF8))
-        self.createBtn.setText(QtGui.QApplication.translate("MainWindow", "创建", None, QtGui.QApplication.UnicodeUTF8))
-        self.removeBtn.setText(QtGui.QApplication.translate("MainWindow", "删除", None, QtGui.QApplication.UnicodeUTF8))
-        self.githubBtn.setText(QtGui.QApplication.translate("MainWindow", "Fork on Github", None, QtGui.QApplication.UnicodeUTF8))
         self.textEdit.setHtml(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -82,6 +77,9 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">By Qingwei He.</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Email ehcapa@qq.com</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.sockTab.setTabText(self.sockTab.indexOf(self.tab), QtGui.QApplication.translate("MainWindow", "Welcome", None, QtGui.QApplication.UnicodeUTF8))
+        self.createBtn.setText(QtGui.QApplication.translate("MainWindow", "创建", None, QtGui.QApplication.UnicodeUTF8))
+        self.removeBtn.setText(QtGui.QApplication.translate("MainWindow", "删除", None, QtGui.QApplication.UnicodeUTF8))
+        self.githubBtn.setText(QtGui.QApplication.translate("MainWindow", "Fork on Github", None, QtGui.QApplication.UnicodeUTF8))
 
 from view.SockTab import SockTab
 from view.SockTreeWidget import SockTreeWidget
