@@ -56,6 +56,7 @@ class TcpClient(threading.Thread):
                 break
             
             logger.debug("data from %s:%d -> %s" % (self.ip, self.port, data))
+            sigObject.emit(signals.SIG_DATA_RECVED, self._id, self.parentId, data)
         
         self.sock.close()
         logger.debug("tcp client stopped")

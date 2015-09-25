@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/main_window.ui'
 #
-# Created: Thu Sep 24 14:54:45 2015
+# Created: Fri Sep 25 14:27:27 2015
 #      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(777, 523)
+        MainWindow.resize(985, 664)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.frame = QtGui.QFrame(self.centralwidget)
@@ -41,12 +41,12 @@ class Ui_MainWindow(object):
         self.githubBtn.setObjectName(_fromUtf8("githubBtn"))
         self.gridLayout.addWidget(self.githubBtn, 0, 3, 1, 1)
         self.sockTree = SockTreeWidget(self.centralwidget)
-        self.sockTree.setGeometry(QtCore.QRect(10, 60, 201, 401))
+        self.sockTree.setGeometry(QtCore.QRect(10, 60, 231, 541))
         self.sockTree.setMinimumSize(QtCore.QSize(201, 0))
         self.sockTree.setStyleSheet(_fromUtf8(""))
         self.sockTree.setObjectName(_fromUtf8("sockTree"))
-        self.sockTab = QtGui.QTabWidget(self.centralwidget)
-        self.sockTab.setGeometry(QtCore.QRect(220, 60, 541, 401))
+        self.sockTab = SockTab(self.centralwidget)
+        self.sockTab.setGeometry(QtCore.QRect(250, 60, 721, 541))
         self.sockTab.setObjectName(_fromUtf8("sockTab"))
         self.tab = QtGui.QWidget()
         self.tab.setObjectName(_fromUtf8("tab"))
@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
         self.sockTab.addTab(self.tab, _fromUtf8(""))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 777, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 985, 23))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
@@ -83,4 +83,5 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Email ehcapa@qq.com</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.sockTab.setTabText(self.sockTab.indexOf(self.tab), QtGui.QApplication.translate("MainWindow", "Welcome", None, QtGui.QApplication.UnicodeUTF8))
 
+from view.SockTab import SockTab
 from view.SockTreeWidget import SockTreeWidget

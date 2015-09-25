@@ -27,9 +27,14 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.createBtn.clicked.connect(self.onCreateBtnClicked)
         self.ui.removeBtn.clicked.connect(self.onRemoveBtnClicked)
         self.ui.githubBtn.clicked.connect(self.onGithubBtnClicked)
+        self.ui.sockTree.itemClicked.connect(self.onSockItemClicked)
         self.connect(sigObject, signals.SIG_REMOTE_TCP_CLIENT_CONNECTED, self.onRemoteTcpClientConnected)
         self.connect(sigObject, signals.SIG_REMOTE_CLOSED, self.onRemoteClosed)
+        self.connect(sigObject, signals.SIG_DATA_RECVED, self.onDataRecved)
     
+    def onDataRecved(self, _id, parentId, data):
+        logger.debug("id=%d, parentId=%d, data=%s" % (_id, parentId, data))
+        
     def onRemoteClosed(self, _id, parentId):
         logger.debug("REMOTE CLOSED")
         self.ui.sockTree.removeSocketItemById(_id)
@@ -37,6 +42,7 @@ class MainWindow(QtGui.QMainWindow):
         
     def onRemoteTcpClientConnected(self, serverId, _id, address, port):
         self.ui.sockTree.addRemoteTcpClient(serverId, _id, address, port)
+        self.ui.sockTab.addRemoteTcpClient(_id, "%s:%d" % (address, port))
         
     def onCreateBtnClicked(self):
         createDialog = self.presenter.getCreateDialog(self.ui.sockTree.currentItem())
@@ -45,6 +51,9 @@ class MainWindow(QtGui.QMainWindow):
         
         createDialog.show()
     
+    def onSockItemClicked(self, sockItem, i):
+        self.presenter.onSockItemClicked(sockItem)
+        
     def onGithubBtnClicked(self):
         self.presenter.openGithubSite()
         

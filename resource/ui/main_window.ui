@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>777</width>
-    <height>523</height>
+    <width>985</width>
+    <height>664</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -83,8 +83,8 @@
      <rect>
       <x>10</x>
       <y>60</y>
-      <width>201</width>
-      <height>401</height>
+      <width>231</width>
+      <height>541</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -102,13 +102,13 @@
      </property>
     </column>
    </widget>
-   <widget class="QTabWidget" name="sockTab">
+   <widget class="SockTab" name="sockTab">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>250</x>
       <y>60</y>
-      <width>541</width>
-      <height>401</height>
+      <width>721</width>
+      <height>541</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -149,7 +149,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>777</width>
+     <width>985</width>
      <height>23</height>
     </rect>
    </property>
@@ -160,7 +160,13 @@ p, li { white-space: pre-wrap; }
   <customwidget>
    <class>SockTreeWidget</class>
    <extends>QTreeWidget</extends>
-   <header location="global">view/SockTreeWidget.h</header>
+   <header>view/SockTreeWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SockTab</class>
+   <extends>QTabWidget</extends>
+   <header location="global">view/SockTab.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>
