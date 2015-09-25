@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 from PyQt4 import QtGui
+import config
 from form.SocketForm import SocketForm
 
 class SockTab(QtGui.QTabWidget):
@@ -39,3 +40,10 @@ class SockTab(QtGui.QTabWidget):
             return
         
         self.setCurrentIndex(index + 1)
+    
+    def addData(self, _id, data, tag=""):
+        index = self.getIndexById(_id)
+        if index < 0:
+            return
+        form = self.forms[index][1]
+        form.addData(data, tag)

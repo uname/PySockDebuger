@@ -8,3 +8,6 @@ class SocketForm(QWidget):
         QWidget.__init__(self, parent)
         self.ui = Ui_SocketForm()
         self.ui.setupUi(self)
+        
+    def addData(self, data, tag=""):
+        self.ui.recvTextBrowser.append(u"%s%s" % (tag, unicode(data, "gbk")))

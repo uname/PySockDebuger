@@ -34,6 +34,7 @@ class MainWindow(QtGui.QMainWindow):
     
     def onDataRecved(self, _id, parentId, data):
         logger.debug("id=%d, parentId=%d, data=%s" % (_id, parentId, data))
+        self.ui.sockTab.addData(_id, data, config.RECV_TAG)
         
     def onRemoteClosed(self, _id, parentId):
         logger.debug("REMOTE CLOSED")
