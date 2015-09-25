@@ -137,7 +137,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="cleanBtn">
        <property name="text">
         <string>清空</string>
        </property>

@@ -8,7 +8,7 @@ import threading
 
 class TcpClient(threading.Thread):
     
-    RECV_SIZE = 1024
+    RECV_SIZE = 262144
     
     def __init__(self, parentId, sock, addr):
         threading.Thread.__init__(self)

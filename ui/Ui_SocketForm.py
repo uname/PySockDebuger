@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/socket_form.ui'
 #
-# Created: Fri Sep 25 15:39:21 2015
+# Created: Fri Sep 25 16:01:42 2015
 #      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -67,9 +67,9 @@ class Ui_SocketForm(object):
         self.horizontalLayout.addWidget(self.hexModeCkb)
         spacerItem = QtGui.QSpacerItem(608, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
-        self.pushButton = QtGui.QPushButton(SocketForm)
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.cleanBtn = QtGui.QPushButton(SocketForm)
+        self.cleanBtn.setObjectName(_fromUtf8("cleanBtn"))
+        self.horizontalLayout.addWidget(self.cleanBtn)
         self.sendBtn = QtGui.QPushButton(SocketForm)
         self.sendBtn.setObjectName(_fromUtf8("sendBtn"))
         self.horizontalLayout.addWidget(self.sendBtn)
@@ -91,6 +91,6 @@ class Ui_SocketForm(object):
         self.repeatTimesCbx.setItemText(4, QtGui.QApplication.translate("SocketForm", "10000", None, QtGui.QApplication.UnicodeUTF8))
         self.repeatTimesCbx.setItemText(5, QtGui.QApplication.translate("SocketForm", "100000", None, QtGui.QApplication.UnicodeUTF8))
         self.hexModeCkb.setText(QtGui.QApplication.translate("SocketForm", "十六进制模式", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton.setText(QtGui.QApplication.translate("SocketForm", "清空", None, QtGui.QApplication.UnicodeUTF8))
+        self.cleanBtn.setText(QtGui.QApplication.translate("SocketForm", "清空", None, QtGui.QApplication.UnicodeUTF8))
         self.sendBtn.setText(QtGui.QApplication.translate("SocketForm", "发送", None, QtGui.QApplication.UnicodeUTF8))
 

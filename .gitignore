@@ -2,3 +2,5 @@ debug.log
 socket/log.py
 test.py
 *.pyc
+build
+dist
