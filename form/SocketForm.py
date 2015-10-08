@@ -32,6 +32,6 @@ class SocketForm(QWidget):
             self.ui.rxLcdNumber.display(len(data) + self.ui.rxLcdNumber.intValue())
         
     def sendData(self):
-        data = utils.qstr2str(self.ui.sendPlainTextEdit.toPlainText())
+        data = utils.qstr2gbk(self.ui.sendPlainTextEdit.toPlainText())
         self.addData(data, config.SEND_TAG, True)
         sigObject.emit(signals.SIG_SEND_DATA, data)
