@@ -2,6 +2,7 @@
 import utils
 import config
 import signals
+from log import logger
 from SigObject import sigObject
 from ui.Ui_SocketForm import Ui_SocketForm
 from PyQt4.QtGui import QWidget
@@ -26,7 +27,13 @@ class SocketForm(QWidget):
         self.ui.txLcdNumber.display(0)
         
     def addData(self, data, tag="", isend=False):
-        self.ui.recvTextBrowser.append(u"%s%s" % (tag, unicode(data, "gbk")))
+        try:
+            data = data.decode("gbk")
+        except UnicodeDecodeError:
+            logger.debug("data unable to decode to gbk")
+            pass
+        text = "%s%s" % (tag, data)
+        self.ui.recvTextBrowser.append(text)
         if isend:
             self.ui.txLcdNumber.display(len(data) + self.ui.txLcdNumber.intValue())
         else:
@@ -35,4 +42,13 @@ class SocketForm(QWidget):
     def sendData(self):
         data = utils.qstr2gbk(self.ui.sendPlainTextEdit.toPlainText())
         self.addData(data, config.SEND_TAG, True)
-        self.sock.sendall(data)
+        n = 0
+        try:
+            n = self.sock.sendall(data)
+        except Exception as e:
+            logger.error("send data error")
+        
+        if n:
+            logger.debug("sent bytes: %d" % n)
+      
+        return n is None
