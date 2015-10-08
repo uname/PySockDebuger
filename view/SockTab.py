@@ -9,8 +9,8 @@ class SockTab(QtGui.QTabWidget):
         QtGui.QTabWidget.__init__(self, parent)
         self.forms = []
     
-    def addRemoteTcpClient(self, _id, label):
-        form = SocketForm(self)
+    def addRemoteTcpClient(self, tcpClient, _id, label):
+        form = SocketForm(tcpClient, self)
         self.addTab(form, label)
         self.setCurrentIndex(self.count() - 1)
         self.forms.append((_id, form))

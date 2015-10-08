@@ -8,8 +8,9 @@ from PyQt4.QtGui import QWidget
 
 class SocketForm(QWidget):
 
-    def __init__(self, parent=None):
+    def __init__(self, sock, parent=None):
         QWidget.__init__(self, parent)
+        self.sock = sock
         self.ui = Ui_SocketForm()
         self.ui.setupUi(self)
     
@@ -34,4 +35,4 @@ class SocketForm(QWidget):
     def sendData(self):
         data = utils.qstr2gbk(self.ui.sendPlainTextEdit.toPlainText())
         self.addData(data, config.SEND_TAG, True)
-        sigObject.emit(signals.SIG_SEND_DATA, data)
+        self.sock.sendall(data)

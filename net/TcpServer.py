@@ -71,7 +71,7 @@ class TcpServer(threading.Thread):
             try:
                 client, addr = self.sock.accept()
                 tcpClient = TcpClient(self._id, client, addr)
-                sigObject.emit(signals.SIG_REMOTE_TCP_CLIENT_CONNECTED, self._id, tcpClient.getId(), addr[0], addr[1])
+                sigObject.emit(signals.SIG_REMOTE_TCP_CLIENT_CONNECTED, tcpClient, self._id, tcpClient.getId(), addr[0], addr[1])
                 logger.debug("new client %s:%d connected" % addr)
                 tcpClient.start()
                 self.tcpClients[tcpClient.getId()] = tcpClient

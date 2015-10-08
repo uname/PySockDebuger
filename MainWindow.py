@@ -41,9 +41,9 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.sockTree.removeSocketItemById(_id)
         self.presenter.removeRemoteTcpClientById(_id, parentId)
         
-    def onRemoteTcpClientConnected(self, serverId, _id, address, port):
+    def onRemoteTcpClientConnected(self, tcpClient, serverId, _id, address, port):
         self.ui.sockTree.addRemoteTcpClient(serverId, _id, address, port)
-        self.ui.sockTab.addRemoteTcpClient(_id, "%s:%d" % (address, port))
+        self.ui.sockTab.addRemoteTcpClient(tcpClient, _id, "%s:%d" % (address, port))
         
     def onCreateBtnClicked(self):
         createDialog = self.presenter.getCreateDialog(self.ui.sockTree.currentItem())
