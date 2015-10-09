@@ -7,7 +7,7 @@ class TcpServerManager(object):
     def __init__(self):
         self.serverDict = {}
     
-    def create(self, port, ip="0.0.0.0"):
+    def create(self, ip, port):
         # Check ip and port
         tcpServer = TcpServer(port, ip)
         _id = tcpServer.getId()

@@ -6,6 +6,10 @@ TCP_CLIENT_ENTRY_TEXT = u"TCP客户端"
 RECV_TAG              = "[RECV]: "
 SEND_TAG              = "[SEND]: "
 
+DEFAULT_IP_LIST       = ["127.0.0.1", "0.0.0.0"]
+RANDOM_MIN_PORT       = 8000
+RANDOM_MAX_PORT       = 9000
+
 TCP_SERVER_ROOT_ID = -1
 TCP_CLIENT_ROOT_ID = -2
 

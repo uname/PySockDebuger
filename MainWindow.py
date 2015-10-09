@@ -50,7 +50,7 @@ class MainWindow(QtGui.QMainWindow):
         if createDialog is None:
             return
         
-        createDialog.show()
+        createDialog.show_()
     
     def onSockItemClicked(self, sockItem, i):
         self.presenter.onSockItemClicked(sockItem)

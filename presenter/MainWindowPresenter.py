@@ -31,9 +31,9 @@ class MainWindowPresenter(object):
         
         return self.createDialogDict[baseSockType]
     
-    def onCreateTcpServer(self, port):
-        logger.debug("create tcp server on %d" % port)
-        _id, address = tcpServerManager.create(port)
+    def onCreateTcpServer(self, ip, port):
+        logger.debug("create tcp server on %s:%d" % (ip, port))
+        _id, address = tcpServerManager.create(ip, port)
         self.window.onCreateTcpServerResult(_id, address)
     
     def onSockItemClicked(self, sockItem):
