@@ -43,7 +43,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox">
+      <widget class="QComboBox" name="ipCmbBox">
        <property name="editable">
         <bool>true</bool>
        </property>

@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/create_tcp_client_form.ui'
 #
-# Created: Fri Sep 04 00:20:19 2015
-#      by: PyQt4 UI code generator 4.9.5
+# Created by: PyQt4 UI code generator 4.11.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,7 +11,16 @@ from PyQt4 import QtCore, QtGui
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
-    _fromUtf8 = lambda s: s
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_CreateTcpClientForm(object):
     def setupUi(self, CreateTcpClientForm):
@@ -28,10 +36,10 @@ class Ui_CreateTcpClientForm(object):
         self.label_2.setMaximumSize(QtCore.QSize(54, 16777215))
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.horizontalLayout_3.addWidget(self.label_2)
-        self.comboBox = QtGui.QComboBox(CreateTcpClientForm)
-        self.comboBox.setEditable(True)
-        self.comboBox.setObjectName(_fromUtf8("comboBox"))
-        self.horizontalLayout_3.addWidget(self.comboBox)
+        self.ipCmbBox = QtGui.QComboBox(CreateTcpClientForm)
+        self.ipCmbBox.setEditable(True)
+        self.ipCmbBox.setObjectName(_fromUtf8("ipCmbBox"))
+        self.horizontalLayout_3.addWidget(self.ipCmbBox)
         self.gridLayout.addLayout(self.horizontalLayout_3, 1, 0, 1, 2)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
@@ -62,9 +70,9 @@ class Ui_CreateTcpClientForm(object):
         QtCore.QMetaObject.connectSlotsByName(CreateTcpClientForm)
 
     def retranslateUi(self, CreateTcpClientForm):
-        CreateTcpClientForm.setWindowTitle(QtGui.QApplication.translate("CreateTcpClientForm", "创建TCP客户端", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("CreateTcpClientForm", "对方地址", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("CreateTcpClientForm", "对方端口", None, QtGui.QApplication.UnicodeUTF8))
-        self.okBtn.setText(QtGui.QApplication.translate("CreateTcpClientForm", "确定", None, QtGui.QApplication.UnicodeUTF8))
-        self.cancelBtn.setText(QtGui.QApplication.translate("CreateTcpClientForm", "取消", None, QtGui.QApplication.UnicodeUTF8))
+        CreateTcpClientForm.setWindowTitle(_translate("CreateTcpClientForm", "创建TCP客户端", None))
+        self.label_2.setText(_translate("CreateTcpClientForm", "对方地址", None))
+        self.label.setText(_translate("CreateTcpClientForm", "对方端口", None))
+        self.okBtn.setText(_translate("CreateTcpClientForm", "确定", None))
+        self.cancelBtn.setText(_translate("CreateTcpClientForm", "取消", None))
 

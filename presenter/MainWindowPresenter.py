@@ -17,11 +17,6 @@ class MainWindowPresenter(object):
         self.createTcpClientDialog = CreateTcpClientDialog(window)
         self.createDialogDict = { socktypes.TCP_SERVER_BASE_TYPE: self.createTcpServerDialog,
                                   socktypes.TCP_CLIENT_BASE_TYPE: self.createTcpClientDialog }
-        
-        self.setupSignals()
-    
-    def setupSignals(self):
-        self.window.connect(self.createTcpServerDialog, signals.SIG_CREATE_TCP_SERVER, self.onCreateTcpServer)
     
     def getCreateDialog(self, selectedItem):
         baseSockType = selectedItem.getBaseSockType()
@@ -31,11 +26,14 @@ class MainWindowPresenter(object):
         
         return self.createDialogDict[baseSockType]
     
-    def onCreateTcpServer(self, ip, port):
+    def createTcpServer(self, ip, port):
         logger.debug("create tcp server on %s:%d" % (ip, port))
         _id, address = tcpServerManager.create(ip, port)
         self.window.onCreateTcpServerResult(_id, address)
     
+    def createTcpClient(self, ip, port):
+        logger.debug("create tcp client, server: %s:%d" % (ip, port))
+        
     def onSockItemClicked(self, sockItem):
         _id = sockItem.getId()
         sockType = sockItem.getSockType()

@@ -18,7 +18,7 @@ class CreateTcpServerDialog(QtGui.QDialog):
         self.setupSignals()
     
     def initIpList(self):
-        self.ui.ipCmbBox.addItems(config.DEFAULT_IP_LIST + utils.getLocalIpList())
+        self.ui.ipCmbBox.addItems(config.DEFAULT_SERVER_IP_LIST + utils.getLocalIpList())
         
     def setupSignals(self):
         self.ui.okBtn.clicked.connect(self.onOkBtnClicked)

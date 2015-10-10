@@ -31,7 +31,16 @@ class MainWindow(QtGui.QMainWindow):
         self.connect(sigObject, signals.SIG_REMOTE_TCP_CLIENT_CONNECTED, self.onRemoteTcpClientConnected)
         self.connect(sigObject, signals.SIG_REMOTE_CLOSED, self.onRemoteClosed)
         self.connect(sigObject, signals.SIG_DATA_RECVED, self.onDataRecved)
+        
+        self.connect(self.presenter.createTcpServerDialog, signals.SIG_CREATE_TCP_SERVER, self.onCreateTcpServer)
+        self.connect(self.presenter.createTcpClientDialog, signals.SIG_CREATE_TCP_CLIENT, self.onCreateTcpClient)
     
+    def onCreateTcpServer(self, ip, port):
+        self.presenter.createTcpServer(ip, port)
+    
+    def onCreateTcpClient(self, ip, port):
+        self.presenter.createTcpClient(ip, port)
+        
     def onDataRecved(self, _id, parentId, data):
         logger.debug("id=%d, parentId=%d, data=%s" % (_id, parentId, data))
         self.ui.sockTab.addData(_id, data, config.RECV_TAG)
