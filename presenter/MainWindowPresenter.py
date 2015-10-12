@@ -8,6 +8,7 @@ from form.CreateTcpServerDialog import CreateTcpServerDialog
 from form.CreateTcpClientDialog import CreateTcpClientDialog
 from net import socktypes
 from net.TcpServerManager import tcpServerManager
+from net.TcpClientManager import tcpClientManager
 
 class MainWindowPresenter(object):
     
@@ -33,6 +34,8 @@ class MainWindowPresenter(object):
     
     def createTcpClient(self, ip, port):
         logger.debug("create tcp client, server: %s:%d" % (ip, port))
+        _id, address = tcpClientManager.create(ip, port)
+        self.window.onCreateTcpClientResult(_id, address)
         
     def onSockItemClicked(self, sockItem):
         _id = sockItem.getId()
@@ -62,6 +65,8 @@ class MainWindowPresenter(object):
             
         elif sockType == socktypes.TCP_SERVER:
             tcpServerManager.removeServer(_id)
+        elif sockType == socktypes.TCP_CLIENT_LOCAL:
+            tcpClientManager.removeClient(_id)
         else:
             pass
             

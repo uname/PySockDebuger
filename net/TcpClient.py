@@ -15,10 +15,26 @@ class TcpClient(threading.Thread):
         self.stopflag = False
         self.parentId = parentId
         self._id = id(self)
-        self.sock = sock
+        if sock:
+            self.sock = sock
+        else:
+            self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            
         self.sock.setblocking(0)
         self.ip, self.port = addr[0:]
     
+    def getAddress(self):
+        return "%s:%d" % (self.ip, self.port)
+        
+    def connect(self):
+        try:
+            self.sock.settimeout(1)
+            self.sock.connect((self.ip, self.port))
+            self.sock.setblocking(0)
+            return True
+        except:
+            return
+        
     def sendall(self, data):
         if data is None:
             return False

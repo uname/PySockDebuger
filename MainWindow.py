@@ -73,10 +73,16 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.sockTree.removeSocketItem(sockItem)
         
     def onCreateTcpServerResult(self, _id, address):
-        if _id != 0:
+        if _id > 0:
             self.ui.sockTree.addTcpServer(_id, address)
         else:
             self.tipPupup.makeErrorText(error.TCP_CREATE_FAILED)
+    
+    def onCreateTcpClientResult(self, _id, address):
+        if _id > 0:
+            self.ui.sockTree.addLocalTcpClient(_id, address)
+        else:
+            self.tipPupup.makeErrorText(error.TCP_CLIENT_CONNECT_ERROR)
         
     def closeEvent(self, e):
         self.presenter.removeAllSockets()
