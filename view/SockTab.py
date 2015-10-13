@@ -10,21 +10,21 @@ class SockTab(QtGui.QTabWidget):
         QtGui.QTabWidget.__init__(self, parent)
         self.forms = []
         
-    def addSockForm(self, tcpClient, _id, label, icon):
+    def addSockForm(self, tcpClient, _id, label, iconSet):
         form = SocketForm(tcpClient, self)
-        self.addTab(form, QtGui.QIcon(icon), label)
+        self.addTab(form, QtGui.QIcon(iconSet[0]), label)
         self.setCurrentIndex(self.count() - 1)
-        self.forms.append((_id, form))
+        self.forms.append((_id, form, iconSet))
         
     def addRemoteTcpClient(self, tcpClient, _id, label):
-        self.addSockForm(tcpClient, _id, label, config.TCP_CLIENT_ICON_REMOTE)
+        self.addSockForm(tcpClient, _id, label, config.TCP_CLIENT_ICON_REMOTE_SET)
     
     def addTcpClient(self, tcpClient, _id, label):
-        self.addSockForm(tcpClient, _id, label, config.TCP_CLIENT_ICON_LOCAL)
+        self.addSockForm(tcpClient, _id, label, config.TCP_CLIENT_ICON_LOCAL_SET)
         
     def getIndexById(self, _id):
         index = 0
-        for id_, _ in self.forms:
+        for id_, _, _ in self.forms:
             if id_ == _id:
                 break
             index += 1
@@ -54,3 +54,6 @@ class SockTab(QtGui.QTabWidget):
             return
         form = self.forms[index][1]
         form.addData(data, tag)
+        if index != self.currentIndex() + 1:
+            self.setTabIcon(index + 1, QtGui.QIcon(self.forms[index][2][1]))
+            

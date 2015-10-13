@@ -28,6 +28,7 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.removeBtn.clicked.connect(self.onRemoveBtnClicked)
         self.ui.githubBtn.clicked.connect(self.onGithubBtnClicked)
         self.ui.sockTree.itemClicked.connect(self.onSockItemClicked)
+        self.ui.sockTab.currentChanged.connect(self.onSockTabClicked)
         self.connect(sigObject, signals.SIG_REMOTE_TCP_CLIENT_CONNECTED, self.onRemoteTcpClientConnected)
         self.connect(sigObject, signals.SIG_REMOTE_CLOSED, self.onRemoteClosed)
         self.connect(sigObject, signals.SIG_DATA_RECVED, self.onDataRecved)
@@ -63,6 +64,9 @@ class MainWindow(QtGui.QMainWindow):
     
     def onSockItemClicked(self, sockItem, i):
         self.presenter.onSockItemClicked(sockItem)
+    
+    def onSockTabClicked(self, index):
+        logger.debug("current sockTab index is %d" % index)
         
     def onGithubBtnClicked(self):
         self.presenter.openGithubSite()
