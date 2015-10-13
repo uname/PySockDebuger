@@ -42,6 +42,7 @@ class MainWindowPresenter(object):
         
     def removeAllSockets(self):
         tcpServerManager.removeAllTcpSevrer()
+        tcpClientManager.removeAllTcpClient()
         # TODO: remove others
     
     def removeRemoteTcpClientById(self, _id, parentId):
