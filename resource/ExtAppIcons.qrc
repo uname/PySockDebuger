@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="Ext1">
+    <file>exticons/github_logo.jpg</file>
+    <file>exticons/my_avatar.jpg</file>
+  </qresource>
+</RCC>

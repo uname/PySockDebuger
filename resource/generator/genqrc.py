@@ -35,8 +35,8 @@ def get_qrc_xml(topdir):
 
 def main(topdir, qrcfile):
     rcc_xml = get_qrc_xml(topdir)
-    open("tmp.qrc", 'w').write(rcc_xml)
-    return system("pyrcc4 -py3 tmp.qrc > %s" % qrcfile)
+    open("AppIcons.qrc", 'w').write(rcc_xml)
+    return system("pyrcc4 -py3 AppIcons.qrc > %s" % qrcfile)
     
 if __name__ == "__main__":
     argc = len(sys.argv)
@@ -55,4 +55,4 @@ if __name__ == "__main__":
     else:
         print "failed:("
         
-    #system("del /S /A tmp.qrc")
+    #system("del /S /A AppIcons.qrc")
