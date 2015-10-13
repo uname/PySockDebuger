@@ -58,7 +58,7 @@ class TcpClient(threading.Thread):
             return
             
         while not self.stopflag:
-            rfds, _, efds = select.select([self.sock], [], [self.sock], 0.5)
+            rfds, _, efds = select.select([self.sock], [], [self.sock], 0.1)
             if len(efds) > 0:
                 logger.error("remote client error")
                 break
