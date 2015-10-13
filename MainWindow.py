@@ -81,7 +81,7 @@ class MainWindow(QtGui.QMainWindow):
     def onCreateTcpClientResult(self, tcpClient, _id, address):
         if _id > 0:
             self.ui.sockTree.addLocalTcpClient(_id, address)
-            self.ui.sockTab.addRemoteTcpClient(tcpClient, _id, address)
+            self.ui.sockTab.addTcpClient(tcpClient, _id, address)
         else:
             self.tipPupup.makeErrorText(error.TCP_CLIENT_CONNECT_ERROR)
         

@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 from PyQt4 import QtGui
+from ui.AppIcons import *
 import config
 from form.SocketForm import SocketForm
 
@@ -8,13 +9,19 @@ class SockTab(QtGui.QTabWidget):
     def __init__(self, parent=None):
         QtGui.QTabWidget.__init__(self, parent)
         self.forms = []
-    
-    def addRemoteTcpClient(self, tcpClient, _id, label):
+        
+    def addSockForm(self, tcpClient, _id, label, icon):
         form = SocketForm(tcpClient, self)
-        self.addTab(form, label)
+        self.addTab(form, QtGui.QIcon(icon), label)
         self.setCurrentIndex(self.count() - 1)
         self.forms.append((_id, form))
+        
+    def addRemoteTcpClient(self, tcpClient, _id, label):
+        self.addSockForm(tcpClient, _id, label, config.TCP_CLIENT_ICON_REMOTE)
     
+    def addTcpClient(self, tcpClient, _id, label):
+        self.addSockForm(tcpClient, _id, label, config.TCP_CLIENT_ICON_LOCAL)
+        
     def getIndexById(self, _id):
         index = 0
         for id_, _ in self.forms:
