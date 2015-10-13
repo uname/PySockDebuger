@@ -38,10 +38,7 @@ class MainWindowPresenter(object):
         self.window.onCreateTcpClientResult(tcpClient, _id, address)
         
     def onSockItemClicked(self, sockItem):
-        _id = sockItem.getId()
-        sockType = sockItem.getSockType()
-        if sockType == socktypes.TCP_CLIENT_REMOTE:
-            self.window.ui.sockTab.setCurrentSocketFormById(_id)
+        self.window.ui.sockTab.setCurrentSocketFormById(sockItem.getId())
         
     def removeAllSockets(self):
         tcpServerManager.removeAllTcpSevrer()
