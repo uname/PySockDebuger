@@ -12,7 +12,7 @@ class TcpClientManager(object):
         tcpClient = TcpClient(0, None, (ip, port))
         if not tcpClient.connect():
             logger.error("fail to connect to server")
-            return -1, ""
+            return None, -1, ""
         
         tcpClient.start()
         logger.debug("tcp client connect success")    
@@ -22,7 +22,7 @@ class TcpClientManager(object):
         self.clientDict[_id] = tcpClient
         logger.info("tcp client create ok")
         
-        return _id, tcpClient.getAddress()
+        return tcpClient, _id, tcpClient.getAddress()
         
     def removeClient(self, _id):
         tcpClient = self.clientDict.get(_id)

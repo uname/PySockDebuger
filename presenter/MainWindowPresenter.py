@@ -34,8 +34,8 @@ class MainWindowPresenter(object):
     
     def createTcpClient(self, ip, port):
         logger.debug("create tcp client, server: %s:%d" % (ip, port))
-        _id, address = tcpClientManager.create(ip, port)
-        self.window.onCreateTcpClientResult(_id, address)
+        tcpClient, _id, address = tcpClientManager.create(ip, port)
+        self.window.onCreateTcpClientResult(tcpClient, _id, address)
         
     def onSockItemClicked(self, sockItem):
         _id = sockItem.getId()
@@ -67,6 +67,7 @@ class MainWindowPresenter(object):
             tcpServerManager.removeServer(_id)
         elif sockType == socktypes.TCP_CLIENT_LOCAL:
             tcpClientManager.removeClient(_id)
+            self.window.ui.sockTab.removeFormById(_id)
         else:
             pass
             
