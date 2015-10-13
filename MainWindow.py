@@ -67,6 +67,7 @@ class MainWindow(QtGui.QMainWindow):
     
     def onSockTabClicked(self, index):
         logger.debug("current sockTab index is %d" % index)
+        self.ui.sockTab.clearUnreadIcon(index)
         
     def onGithubBtnClicked(self):
         self.presenter.openGithubSite()

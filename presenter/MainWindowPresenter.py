@@ -39,7 +39,7 @@ class MainWindowPresenter(object):
         
     def onSockItemClicked(self, sockItem):
         self.window.ui.sockTab.setCurrentSocketFormById(sockItem.getId())
-        
+    
     def removeAllSockets(self):
         tcpServerManager.removeAllTcpSevrer()
         tcpClientManager.removeAllTcpClient()
