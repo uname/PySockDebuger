@@ -6,6 +6,8 @@ from log import logger
 from SigObject import sigObject
 from ui.Ui_SocketForm import Ui_SocketForm
 from PyQt4.QtGui import QWidget
+from PyQt4.QtGui import QKeySequence
+from PyQt4.QtCore import Qt
 
 class SocketForm(QWidget):
 
@@ -13,9 +15,12 @@ class SocketForm(QWidget):
         QWidget.__init__(self, parent)
         self.sock = sock
         self.ui = Ui_SocketForm()
-        self.ui.setupUi(self)
-    
+        self.setupUi()
         self.setupSignals()
+    
+    def setupUi(self):
+        self.ui.setupUi(self)
+        self.ui.sendBtn.setShortcut(QKeySequence(Qt.Key_Return + Qt.CTRL))
         
     def setupSignals(self):
         self.ui.sendBtn.clicked.connect(self.sendData)
@@ -41,7 +46,9 @@ class SocketForm(QWidget):
         
     def sendData(self):
         data = utils.qstr2gbk(self.ui.sendPlainTextEdit.toPlainText())
-        self.addData(data, config.SEND_TAG, True)
+        if len(data) < 1:
+            return
+            
         n = 0
         try:
             n = self.sock.sendall(data)
@@ -50,5 +57,7 @@ class SocketForm(QWidget):
         
         if n:
             logger.debug("sent bytes: %d" % n)
+            self.addData(data, config.SEND_TAG, True)
+            self.ui.sendPlainTextEdit.clear()
       
         return n is None

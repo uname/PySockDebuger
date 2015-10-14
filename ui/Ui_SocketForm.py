@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/socket_form.ui'
 #
-# Created: Fri Sep 25 16:01:42 2015
+# Created: Wed Oct 14 11:22:00 2015
 #      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -24,10 +24,10 @@ class Ui_SocketForm(object):
         self.splitter.setOrientation(QtCore.Qt.Vertical)
         self.splitter.setObjectName(_fromUtf8("splitter"))
         self.recvTextBrowser = QtGui.QTextBrowser(self.splitter)
-        self.recvTextBrowser.setFrameShape(QtGui.QFrame.Box)
+        self.recvTextBrowser.setFrameShape(QtGui.QFrame.NoFrame)
         self.recvTextBrowser.setObjectName(_fromUtf8("recvTextBrowser"))
         self.sendPlainTextEdit = QtGui.QPlainTextEdit(self.splitter)
-        self.sendPlainTextEdit.setFrameShape(QtGui.QFrame.Box)
+        self.sendPlainTextEdit.setFrameShape(QtGui.QFrame.NoFrame)
         self.sendPlainTextEdit.setObjectName(_fromUtf8("sendPlainTextEdit"))
         self.gridLayout.addWidget(self.splitter, 0, 0, 1, 1)
         self.horizontalLayout = QtGui.QHBoxLayout()
@@ -92,5 +92,6 @@ class Ui_SocketForm(object):
         self.repeatTimesCbx.setItemText(5, QtGui.QApplication.translate("SocketForm", "100000", None, QtGui.QApplication.UnicodeUTF8))
         self.hexModeCkb.setText(QtGui.QApplication.translate("SocketForm", "十六进制模式", None, QtGui.QApplication.UnicodeUTF8))
         self.cleanBtn.setText(QtGui.QApplication.translate("SocketForm", "清空", None, QtGui.QApplication.UnicodeUTF8))
+        self.sendBtn.setToolTip(QtGui.QApplication.translate("SocketForm", "<html><head/><body><p>Ctrl+Enter</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.sendBtn.setText(QtGui.QApplication.translate("SocketForm", "发送", None, QtGui.QApplication.UnicodeUTF8))
 
