@@ -2,6 +2,7 @@
 import utils
 import config
 import signals
+import binascii
 from log import logger
 from SigObject import sigObject
 from ui.Ui_SocketForm import Ui_SocketForm
@@ -30,14 +31,29 @@ class SocketForm(QWidget):
     def resetBytes(self):
         self.ui.rxLcdNumber.display(0)
         self.ui.txLcdNumber.display(0)
-        
-    def addData(self, data, tag="", isend=False):
+    
+    def isHexMode(self):
+        return self.ui.hexModeCkb.isChecked()
+    
+    def getHexText(self, data, tag=""):
+        return "%s%s" % (tag, utils.dumpHex(data))
+    
+    def getAsciiText(self, data, tag=""):
         try:
             data = data.decode("gbk")
         except UnicodeDecodeError:
             logger.debug("data unable to decode to gbk")
             pass
-        text = "%s%s" % (tag, data)
+            
+        return "%s%s" % (tag, data)
+        
+    def addData(self, data, tag="", isend=False):
+        text = ""
+        if self.isHexMode():
+            text = self.getHexText(data, tag)
+        else:
+            text = self.getAsciiText(data, tag)
+            
         self.ui.recvTextBrowser.append(text)
         if isend:
             self.ui.txLcdNumber.display(len(data) + self.ui.txLcdNumber.intValue())
@@ -45,10 +61,18 @@ class SocketForm(QWidget):
             self.ui.rxLcdNumber.display(len(data) + self.ui.rxLcdNumber.intValue())
         
     def sendData(self):
-        data = utils.qstr2gbk(self.ui.sendPlainTextEdit.toPlainText())
-        if len(data) < 1:
-            return
+        text = utils.qstr2gbk(self.ui.sendPlainTextEdit.toPlainText())
+        if len(text) < 1:
+            return False
             
+        data = text
+        if self.isHexMode():
+            try:
+                text = "".join(("".join(text.split("\n"))).split(" "))
+                data = binascii.unhexlify(text)
+            except TypeError:
+                logger.error("Non-hexadecimal digit found")
+                return False
         n = 0
         try:
             n = self.sock.sendall(data)
