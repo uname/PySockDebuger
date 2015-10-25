@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 from log import logger
 from TcpClient import TcpClient
+from net import socktypes
 
 class TcpClientManager(object):
     
@@ -9,7 +10,7 @@ class TcpClientManager(object):
     
     def create(self, ip, port):
         # Check ip and port
-        tcpClient = TcpClient(0, None, (ip, port))
+        tcpClient = TcpClient(0, None, (ip, port), socktypes.TCP_CLIENT_LOCAL)
         if not tcpClient.connect():
             logger.error("fail to connect to server")
             return None, -1, ""
