@@ -4,6 +4,7 @@ from SigObject import sigObject
 from log import logger
 import signals
 import socket
+import socktypes
 import threading
 
 class TcpServer(threading.Thread):
@@ -51,6 +52,9 @@ class TcpServer(threading.Thread):
         self.removeAllClients()
         self.stopflag = True
     
+    def removeClient(self, client):
+        self.removeClientById(client.getId())
+        
     def removeClientById(self, clientId):
         logger.debug("client id is --> %d" % clientId)
         tcpClient = self.tcpClients.get(clientId)
@@ -63,14 +67,14 @@ class TcpServer(threading.Thread):
         
     def removeAllClients(self):
         for _id, tcpClient in self.tcpClients.items():
-            tcpClient.stop()
+            self.removeClient(tcpClient)
         
     def run(self):
         while not self.stopflag:
             #logger.debug("waiting for client...")
             try:
                 client, addr = self.sock.accept()
-                tcpClient = TcpClient(self._id, client, addr)
+                tcpClient = TcpClient(self._id, client, addr, socktypes.TCP_CLIENT_REMOTE)
                 sigObject.emit(signals.SIG_REMOTE_TCP_CLIENT_CONNECTED, tcpClient, self._id, tcpClient.getId(), addr[0], addr[1])
                 logger.debug("new client %s:%d connected" % addr)
                 tcpClient.start()

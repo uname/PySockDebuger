@@ -1,20 +1,24 @@
 #-*- coding: utf-8 -*-
 from log import logger
 from SigObject import sigObject
+from net import socktypes
 import signals
 import socket
 import select
+import socktypes
 import threading
 
 class TcpClient(threading.Thread):
     
     RECV_SIZE = 262144
     
-    def __init__(self, parentId, sock, addr):
+    def __init__(self, parentId, sock, addr, sockType):
         threading.Thread.__init__(self)
         self.stopflag = False
         self.parentId = parentId
         self._id = id(self)
+        self.sockType = sockType
+        self.conFlag = sockType == socktypes.TCP_CLIENT_REMOTE
         if sock:
             self.sock = sock
         else:
@@ -25,12 +29,19 @@ class TcpClient(threading.Thread):
     
     def getAddress(self):
         return "%s:%d" % (self.ip, self.port)
+    
+    def getSockType(self):
+        return self.sockType
+    
+    def isConnected(self):
+        return self.conFlag
         
     def connect(self):
         try:
             self.sock.settimeout(1)
             self.sock.connect((self.ip, self.port))
             self.sock.setblocking(0)
+            self.conFlag = True
             return True
         except:
             return
@@ -49,6 +60,7 @@ class TcpClient(threading.Thread):
             return
         
         self.sock.close()
+        self.conFlag = False
     
     def stop(self):
         self.stopflag = True
@@ -74,7 +86,10 @@ class TcpClient(threading.Thread):
             logger.debug("data from %s:%d -> %s" % (self.ip, self.port, data))
             sigObject.emit(signals.SIG_DATA_RECVED, self._id, self.parentId, data)
         
-        self.sock.close()
+        self.close()
         logger.debug("tcp client stopped")
         if not self.stopflag:
             sigObject.emit(signals.SIG_REMOTE_CLOSED, self.getId(), self.parentId)
+        
+        else:
+            sigObject.emit(signals.SIG_REMOVE_SOCK_TAB, self.getId())

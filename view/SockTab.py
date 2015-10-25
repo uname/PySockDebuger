@@ -2,6 +2,7 @@
 from PyQt4 import QtGui
 from ui.AppIcons import *
 import config
+from net import socktypes
 from form.SocketForm import SocketForm
 
 class SockTab(QtGui.QTabWidget):

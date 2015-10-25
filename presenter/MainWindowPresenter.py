@@ -48,6 +48,16 @@ class MainWindowPresenter(object):
     def removeRemoteTcpClientById(self, _id, parentId):
         tcpServerManager.removeRemoteClient(_id, parentId)
         self.window.ui.sockTab.removeFormById(_id)
+    
+    def removeSockTabById(self, _id=None):
+        sockItem = 0
+        if _id is None:
+            sockItem = self.window.ui.sockTree.currentSockItem()
+        else:
+            sockItem = self.window.ui.sockTree.getSockItemById(_id)
+            
+        self.removeSocket(sockItem)
+        self.window.ui.sockTree.removeSocketItem(sockItem)
         
     def removeSocket(self, sockItem):
         _id = sockItem.getId()
@@ -62,10 +72,13 @@ class MainWindowPresenter(object):
             self.window.ui.sockTab.removeFormById(_id)
             
         elif sockType == socktypes.TCP_SERVER:
+            logger.debug("remove tcp server")
             tcpServerManager.removeServer(_id)
+            
         elif sockType == socktypes.TCP_CLIENT_LOCAL:
             tcpClientManager.removeClient(_id)
             self.window.ui.sockTab.removeFormById(_id)
+            
         else:
             pass
             

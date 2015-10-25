@@ -32,6 +32,7 @@ class MainWindow(QtGui.QMainWindow):
         self.connect(sigObject, signals.SIG_REMOTE_TCP_CLIENT_CONNECTED, self.onRemoteTcpClientConnected)
         self.connect(sigObject, signals.SIG_REMOTE_CLOSED, self.onRemoteClosed)
         self.connect(sigObject, signals.SIG_DATA_RECVED, self.onDataRecved)
+        self.connect(sigObject, signals.SIG_REMOVE_SOCK_TAB, self.onRemoveSockTab)
         
         self.connect(self.presenter.createTcpServerDialog, signals.SIG_CREATE_TCP_SERVER, self.onCreateTcpServer)
         self.connect(self.presenter.createTcpClientDialog, signals.SIG_CREATE_TCP_CLIENT, self.onCreateTcpClient)
@@ -73,9 +74,10 @@ class MainWindow(QtGui.QMainWindow):
         self.presenter.openGithubSite()
         
     def onRemoveBtnClicked(self):
-        sockItem = self.ui.sockTree.currentSockItem()
-        self.presenter.removeSocket(sockItem)
-        self.ui.sockTree.removeSocketItem(sockItem)
+        self.onRemoveSockTab(None)
+    
+    def onRemoveSockTab(self, _id):
+        self.presenter.removeSockTabById(_id)
         
     def onCreateTcpServerResult(self, _id, address):
         if _id > 0:

@@ -13,8 +13,160 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
+  <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="connectBtn">
+          <property name="text">
+           <string>PushButton</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="statusLabel">
+          <property name="minimumSize">
+           <size>
+            <width>81</width>
+            <height>16</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Status</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>528</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="maximumSize">
+           <size>
+            <width>12</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Rx</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLCDNumber" name="rxLcdNumber"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="maximumSize">
+           <size>
+            <width>12</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Tx</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLCDNumber" name="txLcdNumber"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="resetBytesBtn">
+          <property name="text">
+           <string>清零</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="maximumSize">
+           <size>
+            <width>54</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>重复发送</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="repeatTimesCbx">
+          <property name="maximumSize">
+           <size>
+            <width>102</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+          <item>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>10</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>100</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>1000</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>10000</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>100000</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="hexModeCkb">
+          <property name="text">
+           <string>十六进制模式</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -31,98 +183,8 @@
      </widget>
     </widget>
    </item>
-   <item row="1" column="0">
+   <item row="2" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Rx</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLCDNumber" name="rxLcdNumber"/>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Tx</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLCDNumber" name="txLcdNumber"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="resetBytesBtn">
-       <property name="text">
-        <string>清零</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_3">
-       <property name="maximumSize">
-        <size>
-         <width>54</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>重复发送</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="repeatTimesCbx">
-       <property name="maximumSize">
-        <size>
-         <width>102</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="editable">
-        <bool>true</bool>
-       </property>
-       <item>
-        <property name="text">
-         <string>1</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>10</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>100</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>1000</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>10000</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>100000</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="hexModeCkb">
-       <property name="text">
-        <string>十六进制模式</string>
-       </property>
-      </widget>
-     </item>
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">

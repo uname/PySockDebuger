@@ -3,6 +3,7 @@ import utils
 import config
 import signals
 import binascii
+from net import socktypes
 from log import logger
 from SigObject import sigObject
 from ui.Ui_SocketForm import Ui_SocketForm
@@ -23,11 +24,25 @@ class SocketForm(QWidget):
         self.ui.setupUi(self)
         self.ui.sendBtn.setShortcut(QKeySequence(Qt.Key_Return + Qt.CTRL))
         
+        if self.sock.getSockType() == socktypes.TCP_CLIENT_REMOTE:
+            self.ui.connectBtn.setText(config.TEXT_DISCONNECT)
+            self.ui.statusLabel.setText(config.STATUS_CONNECTED)
+        
     def setupSignals(self):
         self.ui.sendBtn.clicked.connect(self.sendData)
         self.ui.cleanBtn.clicked.connect(self.ui.recvTextBrowser.clear)
         self.ui.resetBytesBtn.clicked.connect(self.resetBytes)
+        self.ui.connectBtn.clicked.connect(self.onConnectBtnClicked)
     
+    def onConnectBtnClicked(self):
+        if self.sock.isConnected():
+            sockType = self.sock.getSockType()
+            if sockType == socktypes.TCP_CLIENT_LOCAL:
+                self.sock.stop()
+            elif sockType == socktypes.TCP_CLIENT_REMOTE:
+                sigObject.emit(signals.SIG_REMOVE_SOCK_TAB, self.sock.getId())
+                
+        
     def resetBytes(self):
         self.ui.rxLcdNumber.display(0)
         self.ui.txLcdNumber.display(0)
