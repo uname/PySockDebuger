@@ -11,13 +11,13 @@ class TcpClientManager(object):
     def create(self, ip, port):
         # Check ip and port
         tcpClient = TcpClient(0, None, (ip, port), socktypes.TCP_CLIENT_LOCAL)
-        if not tcpClient.connect():
-            logger.error("fail to connect to server")
-            return None, -1, ""
         
-        tcpClient.start()
-        logger.debug("tcp client connect success")    
-        
+        # 在创建时不连接
+        # if not tcpClient.connect():
+            # logger.error("fail to connect to server")
+            # return None, -1, ""
+        # tcpClient.start()
+        # logger.debug("tcp client connect success")    
         
         _id = tcpClient.getId()
         self.clientDict[_id] = tcpClient

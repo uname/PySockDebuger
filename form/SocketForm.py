@@ -24,9 +24,22 @@ class SocketForm(QWidget):
         self.ui.setupUi(self)
         self.ui.sendBtn.setShortcut(QKeySequence(Qt.Key_Return + Qt.CTRL))
         
-        if self.sock.getSockType() == socktypes.TCP_CLIENT_REMOTE:
-            self.ui.connectBtn.setText(config.TEXT_DISCONNECT)
-            self.ui.statusLabel.setText(config.STATUS_CONNECTED)
+        sockType = self.sock.getSockType()
+        if sockType == socktypes.TCP_CLIENT_REMOTE:
+            self.setupUi_connected()
+        
+        elif sockType == socktypes.TCP_CLIENT_LOCAL:
+            self.ui.connectBtn.setText(config.TEXT_CONNECT)
+            self.ui.statusLabel.setText(config.STATUS_NOT_CONNECTED)
+    
+    def setupUi_connected(self):
+        self.ui.connectBtn.setText(config.TEXT_DISCONNECT)
+        self.ui.statusLabel.setText(config.STATUS_CONNECTED)
+        self.ui.recvTextBrowser.clear()
+    
+    def setupUi_disconnected(self):
+        self.ui.connectBtn.setText(config.TEXT_CONNECT)
+        self.ui.statusLabel.setText(config.STATUS_DISCONNECTED)
         
     def setupSignals(self):
         self.ui.sendBtn.clicked.connect(self.sendData)
@@ -35,13 +48,20 @@ class SocketForm(QWidget):
         self.ui.connectBtn.clicked.connect(self.onConnectBtnClicked)
     
     def onConnectBtnClicked(self):
+        sockType = self.sock.getSockType()
         if self.sock.isConnected():
-            sockType = self.sock.getSockType()
             if sockType == socktypes.TCP_CLIENT_LOCAL:
-                self.sock.stop()
+                self.sock.stop(onlyStopSocket=True)
+                self.setupUi_disconnected()
+                
             elif sockType == socktypes.TCP_CLIENT_REMOTE:
                 sigObject.emit(signals.SIG_REMOVE_SOCK_TAB, self.sock.getId())
-                
+        
+        else:
+            if sockType == socktypes.TCP_CLIENT_LOCAL:
+                if self.sock.connect():
+                    self.sock.start()
+                    self.setupUi_connected()
         
     def resetBytes(self):
         self.ui.rxLcdNumber.display(0)
@@ -76,6 +96,9 @@ class SocketForm(QWidget):
             self.ui.rxLcdNumber.display(len(data) + self.ui.rxLcdNumber.intValue())
         
     def sendData(self):
+        if not self.sock.isConnected():
+            return
+            
         text = utils.qstr2gbk(self.ui.sendPlainTextEdit.toPlainText())
         if len(text) < 1:
             return False

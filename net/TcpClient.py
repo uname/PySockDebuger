@@ -8,17 +8,19 @@ import select
 import socktypes
 import threading
 
-class TcpClient(threading.Thread):
+class TcpClient():
     
     RECV_SIZE = 262144
     
     def __init__(self, parentId, sock, addr, sockType):
-        threading.Thread.__init__(self)
-        self.stopflag = False
+        #threading.Thread.__init__(self)
+        #self.stopflag = False
         self.parentId = parentId
         self._id = id(self)
         self.sockType = sockType
         self.conFlag = sockType == socktypes.TCP_CLIENT_REMOTE
+        self.onlyStopSocket = False
+        self.receiver = None
         if sock:
             self.sock = sock
         else:
@@ -38,12 +40,16 @@ class TcpClient(threading.Thread):
         
     def connect(self):
         try:
-            self.sock.settimeout(1)
+            if self.sock is None:
+                self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                
+            self.sock.settimeout(0.5)
             self.sock.connect((self.ip, self.port))
             self.sock.setblocking(0)
             self.conFlag = True
             return True
-        except:
+        except Exception as e:
+            logger.error("connect exp: %s" % e.message())
             return
         
     def sendall(self, data):
@@ -55,41 +61,59 @@ class TcpClient(threading.Thread):
     def getId(self):
         return self._id
         
-    def close(self):
+    def close(self, stopflag):
         if self.sock is None:
             return
         
         self.sock.close()
+        self.sock = None
         self.conFlag = False
+            
+        if not stopflag:
+            sigObject.emit(signals.SIG_REMOTE_CLOSED, self._id, self.parentId)
+        
+        elif not self.onlyStopSocket:
+            sigObject.emit(signals.SIG_REMOVE_SOCK_TAB, self._id)
+            
+    def stop(self, onlyStopSocket=False):
+        if self.receiver:
+            self.onlyStopSocket = onlyStopSocket
+            self.receiver.stop()
     
-    def stop(self):
-        self.stopflag = True
+    def start(self):
+        self.receiver = TcpClient.Receiver(self)
+        self.receiver.start()
+    
+    class Receiver(threading.Thread):
+        def __init__(self, parent):
+            threading.Thread.__init__(self)
+            self.parent = parent
+            self.stopflag = False
         
-    def run(self):
-        if self.sock is None:
-            return
-            
-        while not self.stopflag:
-            rfds, _, efds = select.select([self.sock], [], [self.sock], 0.1)
-            if len(efds) > 0:
-                logger.error("remote client error")
-                break
+        def stop(self):
+            self.stopflag = True
+        
+        def run(self):
+            if self.parent.sock is None:
+                return
                 
-            if len(rfds) < 1:
-                continue
+            while not self.stopflag:
+                rfds, _, efds = select.select([self.parent.sock], [], [self.parent.sock], 0.1)
+                if len(efds) > 0:
+                    logger.error("remote client error")
+                    break
+                    
+                if len(rfds) < 1:
+                    continue
+                    
+                data = self.parent.sock.recv(TcpClient.RECV_SIZE)
+                if data == "":
+                    logger.error("socket closed")
+                    break
                 
-            data = self.sock.recv(self.RECV_SIZE)
-            if data == "":
-                logger.error("socket closed")
-                break
+                logger.debug("data from %s:%d -> %s" % (self.parent.ip, self.parent.port, data))
+                sigObject.emit(signals.SIG_DATA_RECVED, self.parent._id, self.parent.parentId, data)
             
-            logger.debug("data from %s:%d -> %s" % (self.ip, self.port, data))
-            sigObject.emit(signals.SIG_DATA_RECVED, self._id, self.parentId, data)
+            self.parent.close(self.stopflag)
+            logger.debug("tcp client stopped")
         
-        self.close()
-        logger.debug("tcp client stopped")
-        if not self.stopflag:
-            sigObject.emit(signals.SIG_REMOTE_CLOSED, self.getId(), self.parentId)
-        
-        else:
-            sigObject.emit(signals.SIG_REMOVE_SOCK_TAB, self.getId())
