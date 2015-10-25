@@ -30,7 +30,7 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.sockTree.itemClicked.connect(self.onSockItemClicked)
         self.ui.sockTab.currentChanged.connect(self.onSockTabClicked)
         self.connect(sigObject, signals.SIG_REMOTE_TCP_CLIENT_CONNECTED, self.onRemoteTcpClientConnected)
-        self.connect(sigObject, signals.SIG_REMOTE_CLOSED, self.onRemoteClosed)
+        #self.connect(sigObject, signals.SIG_REMOTE_CLOSED, self.onRemoteClosed)
         self.connect(sigObject, signals.SIG_DATA_RECVED, self.onDataRecved)
         self.connect(sigObject, signals.SIG_REMOVE_SOCK_TAB, self.onRemoveSockTab)
         
@@ -47,10 +47,10 @@ class MainWindow(QtGui.QMainWindow):
         logger.debug("id=%d, parentId=%d, data=%s" % (_id, parentId, data))
         self.ui.sockTab.addData(_id, data, config.RECV_TAG)
         
-    def onRemoteClosed(self, _id, parentId):
-        logger.debug("REMOTE CLOSED")
-        self.ui.sockTree.removeSocketItemById(_id)
-        self.presenter.removeRemoteTcpClientById(_id, parentId)
+    # def onRemoteClosed(self, _id, parentId):
+        # logger.debug("REMOTE CLOSED")
+        #self.ui.sockTree.removeSocketItemById(_id)
+        #self.presenter.removeRemoteTcpClientById(_id, parentId)
         
     def onRemoteTcpClientConnected(self, tcpClient, serverId, _id, address, port):
         self.ui.sockTree.addRemoteTcpClient(serverId, _id, address, port)

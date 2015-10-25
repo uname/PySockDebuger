@@ -46,7 +46,18 @@ class SocketForm(QWidget):
         self.ui.cleanBtn.clicked.connect(self.ui.recvTextBrowser.clear)
         self.ui.resetBytesBtn.clicked.connect(self.resetBytes)
         self.ui.connectBtn.clicked.connect(self.onConnectBtnClicked)
+        
+        self.connect(sigObject, signals.SIG_REMOTE_CLOSED, self.onRemoteClosed)
     
+    def onRemoteClosed(self):
+        sockType = self.sock.getSockType()
+        if sockType == socktypes.TCP_CLIENT_LOCAL:
+            self.setupUi_disconnected()
+            # TODO: remove socket, important!!!!
+            
+        elif sockType == socktypes.TCP_CLIENT_REMOTE:
+            sigObject.emit(signals.SIG_REMOVE_SOCK_TAB, self.sock.getId())
+        
     def onConnectBtnClicked(self):
         sockType = self.sock.getSockType()
         if self.sock.isConnected():

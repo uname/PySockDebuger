@@ -48,8 +48,9 @@ class TcpClient():
             self.sock.setblocking(0)
             self.conFlag = True
             return True
+            
         except Exception as e:
-            logger.error("connect exp: %s" % e.message())
+            logger.error("connect exp: %s" % e.message)
             return
         
     def sendall(self, data):
@@ -62,21 +63,27 @@ class TcpClient():
         return self._id
         
     def close(self, stopflag):
+        logger.debug("------ CLOSE ------")
+        print stopflag
         if self.sock is None:
             return
         
         self.sock.close()
         self.sock = None
         self.conFlag = False
-            
+        
+        print "self.onlyStopSocket=", self.onlyStopSocket
         if not stopflag:
+            logger.debug("emit SIG_REMOTE_CLOSED")
             sigObject.emit(signals.SIG_REMOTE_CLOSED, self._id, self.parentId)
         
         elif not self.onlyStopSocket:
+            logger.debug("emit SIG_REMOVE_SOCK_TAB")
             sigObject.emit(signals.SIG_REMOVE_SOCK_TAB, self._id)
             
     def stop(self, onlyStopSocket=False):
         if self.receiver:
+            print "---> ", onlyStopSocket
             self.onlyStopSocket = onlyStopSocket
             self.receiver.stop()
     
@@ -114,6 +121,7 @@ class TcpClient():
                 logger.debug("data from %s:%d -> %s" % (self.parent.ip, self.parent.port, data))
                 sigObject.emit(signals.SIG_DATA_RECVED, self.parent._id, self.parent.parentId, data)
             
+            print 123, self.stopflag
             self.parent.close(self.stopflag)
             logger.debug("tcp client stopped")
         
