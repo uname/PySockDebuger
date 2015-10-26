@@ -49,11 +49,15 @@ class SocketForm(QWidget):
         
         self.connect(sigObject, signals.SIG_REMOTE_CLOSED, self.onRemoteClosed)
     
-    def onRemoteClosed(self):
+    def onRemoteClosed(self, _id, parentId):
+        if _id != self.sock.getId():
+            logger.debug("NOT CURRENT SOCKET, IGNORE")
+            return
+            
         sockType = self.sock.getSockType()
         if sockType == socktypes.TCP_CLIENT_LOCAL:
             self.setupUi_disconnected()
-            # TODO: remove socket, important!!!!
+            logger.debug("setupUi_disconnected")
             
         elif sockType == socktypes.TCP_CLIENT_REMOTE:
             sigObject.emit(signals.SIG_REMOVE_SOCK_TAB, self.sock.getId())

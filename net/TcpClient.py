@@ -64,15 +64,13 @@ class TcpClient():
         
     def close(self, stopflag):
         logger.debug("------ CLOSE ------")
-        print stopflag
         if self.sock is None:
             return
         
         self.sock.close()
         self.sock = None
         self.conFlag = False
-        
-        print "self.onlyStopSocket=", self.onlyStopSocket
+
         if not stopflag:
             logger.debug("emit SIG_REMOTE_CLOSED")
             sigObject.emit(signals.SIG_REMOTE_CLOSED, self._id, self.parentId)
@@ -83,7 +81,6 @@ class TcpClient():
             
     def stop(self, onlyStopSocket=False):
         if self.receiver:
-            print "---> ", onlyStopSocket
             self.onlyStopSocket = onlyStopSocket
             self.receiver.stop()
     
@@ -121,7 +118,6 @@ class TcpClient():
                 logger.debug("data from %s:%d -> %s" % (self.parent.ip, self.parent.port, data))
                 sigObject.emit(signals.SIG_DATA_RECVED, self.parent._id, self.parent.parentId, data)
             
-            print 123, self.stopflag
             self.parent.close(self.stopflag)
             logger.debug("tcp client stopped")
         
