@@ -27,7 +27,7 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.createBtn.clicked.connect(self.onCreateBtnClicked)
         self.ui.removeBtn.clicked.connect(self.onRemoveBtnClicked)
         self.ui.githubBtn.clicked.connect(self.onGithubBtnClicked)
-        self.ui.sockTree.itemClicked.connect(self.onSockItemClicked)
+        #self.ui.sockTree.itemClicked.connect(self.onSockItemClicked)
         self.ui.sockTab.currentChanged.connect(self.onSockTabClicked)
         self.connect(sigObject, signals.SIG_REMOTE_TCP_CLIENT_CONNECTED, self.onRemoteTcpClientConnected)
         #self.connect(sigObject, signals.SIG_REMOTE_CLOSED, self.onRemoteClosed)
