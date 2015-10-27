@@ -20,6 +20,7 @@ TCP_CLIENT_ICON_REMOTE        = ":app/icons/app/tcp_client_remote.png"
 TCP_CLIENT_ICON_REMOTE_UNREAD = ":app/icons/app/tcp_client_remote_unread.png"
 TCP_CLIENT_ICON_LOCAL         = ":app/icons/app/tcp_client_local.png"
 TCP_CLIENT_ICON_LOCAL_UNREAD  = ":app/icons/app/tcp_client_local_unread.png"
+QRCODE_ZFB                    = ":qrcode/icons/qrcode/zfb.png"
 
 TCP_CLIENT_ICON_REMOTE_SET    = (TCP_CLIENT_ICON_REMOTE, TCP_CLIENT_ICON_REMOTE_UNREAD)
 TCP_CLIENT_ICON_LOCAL_SET     = (TCP_CLIENT_ICON_LOCAL, TCP_CLIENT_ICON_LOCAL_UNREAD)

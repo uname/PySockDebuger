@@ -219,6 +219,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../ExtAppIcons.qrc"/>
+ </resources>
  <connections/>
 </ui>

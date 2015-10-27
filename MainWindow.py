@@ -22,6 +22,7 @@ class MainWindow(QtGui.QMainWindow):
     def setupUi(self):
         self.ui.setupUi(self)
         self.ui.sockTree.init()
+        self.ui.qrcodeView.setIcon(QtGui.QIcon(config.QRCODE_ZFB))
         
     def setupSignals(self):
         self.ui.createBtn.clicked.connect(self.onCreateBtnClicked)

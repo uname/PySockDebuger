@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file '../ui/main_window.ui'
 #
-# Created by: PyQt4 UI code generator 4.11.4
+# Created: Tue Oct 27 14:34:20 2015
+#      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -11,16 +12,7 @@ from PyQt4 import QtCore, QtGui
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
-    def _fromUtf8(s):
-        return s
-
-try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+    _fromUtf8 = lambda s: s
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -44,9 +36,15 @@ class Ui_MainWindow(object):
         self.tab = QtGui.QWidget()
         self.tab.setObjectName(_fromUtf8("tab"))
         self.textEdit = QtGui.QTextEdit(self.tab)
-        self.textEdit.setGeometry(QtCore.QRect(10, 10, 641, 261))
+        self.textEdit.setGeometry(QtCore.QRect(10, 10, 641, 121))
         self.textEdit.setFrameShape(QtGui.QFrame.NoFrame)
         self.textEdit.setObjectName(_fromUtf8("textEdit"))
+        self.qrcodeView = QtGui.QPushButton(self.tab)
+        self.qrcodeView.setGeometry(QtCore.QRect(10, 160, 277, 310))
+        self.qrcodeView.setAutoFillBackground(True)
+        self.qrcodeView.setText(_fromUtf8(""))
+        self.qrcodeView.setIconSize(QtCore.QSize(277, 310))
+        self.qrcodeView.setObjectName(_fromUtf8("qrcodeView"))
         self.sockTab.addTab(self.tab, _fromUtf8(""))
         self.gridLayout.addWidget(self.splitter, 1, 1, 1, 1)
         self.horizontalLayout = QtGui.QHBoxLayout()
@@ -80,8 +78,8 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(_translate("MainWindow", "PySockDebuger", None))
-        self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "PySockDebuger", None, QtGui.QApplication.UnicodeUTF8))
+        self.textEdit.setHtml(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
@@ -89,11 +87,13 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">https://github.com/uname/PySockDebuger</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">By Qingwei He.</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Email ehcapa@qq.com</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\":/Ext1/exticons/my_avatar.jpg\" /></p></body></html>", None))
-        self.sockTab.setTabText(self.sockTab.indexOf(self.tab), _translate("MainWindow", "Welcome", None))
-        self.createBtn.setText(_translate("MainWindow", "创建", None))
-        self.removeBtn.setText(_translate("MainWindow", "删除", None))
-        self.githubBtn.setText(_translate("MainWindow", "Fork on Github", None))
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">In order to help the developer to make better,</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">you can donate by scan the QR code below:) Thanks!</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.sockTab.setTabText(self.sockTab.indexOf(self.tab), QtGui.QApplication.translate("MainWindow", "Welcome", None, QtGui.QApplication.UnicodeUTF8))
+        self.createBtn.setText(QtGui.QApplication.translate("MainWindow", "创建", None, QtGui.QApplication.UnicodeUTF8))
+        self.removeBtn.setText(QtGui.QApplication.translate("MainWindow", "删除", None, QtGui.QApplication.UnicodeUTF8))
+        self.githubBtn.setText(QtGui.QApplication.translate("MainWindow", "Fork on Github", None, QtGui.QApplication.UnicodeUTF8))
 
 from view.SockTab import SockTab
 from view.SockTreeWidget import SockTreeWidget
