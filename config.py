@@ -3,6 +3,8 @@ RELEASE_TYPE          = "py"
 GITHUB_HOME           = "https://github.com/uname/PySockDebuger"
 TCP_SERVER_ENTRY_TEXT = u"TCP服务器"
 TCP_CLIENT_ENTRY_TEXT = u"TCP客户端"
+UDP_SERVER_ENTRY_TEXT = u"UDP服务器"
+UDP_CLIENT_ENTRY_TEXT = u"UDP客户端"
 RECV_TAG              = "[RECV]: "
 SEND_TAG              = "[SEND]: "
 
@@ -14,6 +16,8 @@ RANDOM_MAX_PORT       = 9000
 
 TCP_SERVER_ROOT_ID = -1
 TCP_CLIENT_ROOT_ID = -2
+UDP_SERVER_ROOT_ID = -3
+UDP_CLIENT_ROOT_ID = -4
 
 TCP_SERVER_ICON               = ":app/icons/app/tcp_server.png"
 TCP_CLIENT_ICON_REMOTE        = ":app/icons/app/tcp_client_remote.png"

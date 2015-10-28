@@ -6,6 +6,7 @@ from webbrowser import open as openweb
 from log import logger
 from form.CreateTcpServerDialog import CreateTcpServerDialog
 from form.CreateTcpClientDialog import CreateTcpClientDialog
+from form.CreateUdpClientDialog import CreateUdpClientDialog
 from net import socktypes
 from net.TcpServerManager import tcpServerManager
 from net.TcpClientManager import tcpClientManager
@@ -16,8 +17,10 @@ class MainWindowPresenter(object):
         self.window = window
         self.createTcpServerDialog = CreateTcpServerDialog(window)
         self.createTcpClientDialog = CreateTcpClientDialog(window)
+        self.createUdpClientDialog = CreateUdpClientDialog(window)
         self.createDialogDict = { socktypes.TCP_SERVER_BASE_TYPE: self.createTcpServerDialog,
-                                  socktypes.TCP_CLIENT_BASE_TYPE: self.createTcpClientDialog }
+                                  socktypes.TCP_CLIENT_BASE_TYPE: self.createTcpClientDialog,
+                                  socktypes.UDP_CLIENT_BASE_TYPE: self.createUdpClientDialog }
     
     def getCreateDialog(self, selectedItem):
         baseSockType = selectedItem.getBaseSockType()
