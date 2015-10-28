@@ -22,6 +22,7 @@ class CreateUdpClientDialog(QtGui.QDialog):
         
     def setupSignals(self):
         self.ui.okBtn.clicked.connect(self.onOkBtnClicked)
+        self.ui.broadcastBtn.clicked.connect(self.onBroadcastBtnClicked)
         self.ui.cancelBtn.clicked.connect(self.close)
         self.ui.sysPortCbx.stateChanged.connect(self.onSysPortStateChanged)
         
@@ -46,6 +47,17 @@ class CreateUdpClientDialog(QtGui.QDialog):
         self.emit(signals.SIG_CREATE_UDP_CLIENT, utils.qstr2str(self.ui.ipCmbBox.currentText()), remotePort, localPort)
         self.close()
 	
+    def onBroadcastBtnClicked(self):
+        curIp = utils.qstr2str(self.ui.ipCmbBox.currentText())
+        if curIp in ("127.0.0.1", "0.0.0.0"):
+            return
+        
+        broadcastIp = utils.getBroadcastIp(curIp)
+        if broadcastIp is None:
+            return
+        
+        self.ui.ipCmbBox.setEditText(broadcastIp)
+        
     def onSysPortStateChanged(self, state):
         self.ui.localPortCmbBox.setEnabled(state == 0)
         

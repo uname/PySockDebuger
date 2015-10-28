@@ -9,6 +9,23 @@ isPortOk = lambda port: port > 0 and port < 65535
 getLocalIpList = lambda: socket.gethostbyname_ex(socket.gethostname())[2]
 randomPort = lambda: random.randint(config.RANDOM_MIN_PORT, config.RANDOM_MAX_PORT)
 
+
+def getMask(ip):
+    return "255.255.255.0"  # just for test
+    
+def getBroadcastIp(ip, mask=None):
+    if not isinstance(ip, basestring):
+        return
+    
+    if mask is None:
+        mask = getMask(ip)
+    
+    ipTokens = map(int, ip.split("."))
+    maskTokens = map(int, mask.split("."))
+    
+    return ".".join([`ipTokens[i] & maskTokens[i] | (~maskTokens[i] & 0xff)` for i in xrange(len(ipTokens))])
+    
+    
 def dumpHex(data, addr=0, prefix=""):
         '''
         Utility function that converts data into hex dump format.
