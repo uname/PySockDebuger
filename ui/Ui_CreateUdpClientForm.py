@@ -94,7 +94,7 @@ class Ui_CreateUdpClientForm(object):
         QtCore.QMetaObject.connectSlotsByName(CreateUdpClientForm)
 
     def retranslateUi(self, CreateUdpClientForm):
-        CreateUdpClientForm.setWindowTitle(_translate("CreateUdpClientForm", "创建TCP客户端", None))
+        CreateUdpClientForm.setWindowTitle(_translate("CreateUdpClientForm", "创建UDP客户端", None))
         self.label_2.setText(_translate("CreateUdpClientForm", "对方地址", None))
         self.broadcastBtn.setText(_translate("CreateUdpClientForm", "广播地址", None))
         self.label.setText(_translate("CreateUdpClientForm", "对方端口", None))
