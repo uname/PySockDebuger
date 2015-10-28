@@ -32,6 +32,7 @@ class TcpClientManager(object):
             return
             
         tcpClient.stop()
+        del self.clientDict[_id]
         logger.debug("remove Client ok")
             
     def removeAllTcpClient(self):
