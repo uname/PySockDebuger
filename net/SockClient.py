@@ -29,7 +29,7 @@ class SockClient():
     
     def createSockByType(self, sockType):
         if sockType == socktypes.UDP_CLIENT_LOCAL:
-            self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         elif sockType == socktypes.TCP_CLIENT_LOCAL:
             self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         else:
