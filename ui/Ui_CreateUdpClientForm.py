@@ -83,6 +83,7 @@ class Ui_CreateUdpClientForm(object):
         spacerItem2 = QtGui.QSpacerItem(68, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem2)
         self.okBtn = QtGui.QPushButton(CreateUdpClientForm)
+        self.okBtn.setDefault(True)
         self.okBtn.setObjectName(_fromUtf8("okBtn"))
         self.horizontalLayout_2.addWidget(self.okBtn)
         self.cancelBtn = QtGui.QPushButton(CreateUdpClientForm)

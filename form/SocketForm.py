@@ -31,6 +31,10 @@ class SocketForm(QWidget):
         elif sockType == socktypes.TCP_CLIENT_LOCAL:
             self.ui.connectBtn.setText(config.TEXT_CONNECT)
             self.ui.statusLabel.setText(config.STATUS_NOT_CONNECTED)
+        
+        elif sockType == socktypes.UDP_CLIENT_LOCAL:
+            self.ui.connectBtn.setVisible(False)
+            self.ui.statusLabel.setText(config.STATUS_UDP)
     
     def setupUi_connected(self):
         self.ui.connectBtn.setText(config.TEXT_DISCONNECT)

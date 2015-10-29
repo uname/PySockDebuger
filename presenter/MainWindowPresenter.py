@@ -10,6 +10,7 @@ from form.CreateUdpClientDialog import CreateUdpClientDialog
 from net import socktypes
 from net.TcpServerManager import tcpServerManager
 from net.TcpClientManager import tcpClientManager
+from net.UdpClientManager import udpClientManager
 
 class MainWindowPresenter(object):
     
@@ -39,13 +40,19 @@ class MainWindowPresenter(object):
         logger.debug("create tcp client, server: %s:%d" % (ip, port))
         tcpClient, _id, address = tcpClientManager.create(ip, port)
         self.window.onCreateTcpClientResult(tcpClient, _id, address)
+    
+    def createUdpClient(self, ip, remoteIp, localIp):
+        logger.debug("create udp client: %s:%d, %d" % (ip, remoteIp, localIp))
+        udpClient, _id, address = udpClientManager.create(ip, remoteIp)
+        self.window.onCreateUdpClientResult(udpClient, _id, address)
         
     def onSockItemClicked(self, sockItem):
         self.window.ui.sockTab.setCurrentSocketFormById(sockItem.getId())
     
     def removeAllSockets(self):
         tcpServerManager.removeAllTcpSevrer()
-        tcpClientManager.removeAllTcpClient()
+        tcpClientManager.removeAllClient()
+        udpClientManager.removeAllClient()
         # TODO: remove others
     
     def removeRemoteTcpClientById(self, _id, parentId):
@@ -80,6 +87,11 @@ class MainWindowPresenter(object):
             
         elif sockType == socktypes.TCP_CLIENT_LOCAL:
             tcpClientManager.removeClient(_id)
+            self.window.ui.sockTab.removeFormById(_id)
+        
+        elif sockType == socktypes.UDP_CLIENT_LOCAL:
+            logger.debug("remove udp client")
+            udpClientManager.removeClient(_id)
             self.window.ui.sockTab.removeFormById(_id)
             
         else:

@@ -24,10 +24,13 @@ TCP_CLIENT_ICON_REMOTE        = ":app/icons/app/tcp_client_remote.png"
 TCP_CLIENT_ICON_REMOTE_UNREAD = ":app/icons/app/tcp_client_remote_unread.png"
 TCP_CLIENT_ICON_LOCAL         = ":app/icons/app/tcp_client_local.png"
 TCP_CLIENT_ICON_LOCAL_UNREAD  = ":app/icons/app/tcp_client_local_unread.png"
+UDP_CLIENT_ICON_LOCAL         = ":app/icons/app/udp_client_local.png"
+UDP_CLIENT_ICON_LOCAL_UNREAD  = ":app/icons/app/udp_client_local_unread.png"
 QRCODE_ZFB                    = ":qrcode/icons/qrcode/zfb.png"
 
 TCP_CLIENT_ICON_REMOTE_SET    = (TCP_CLIENT_ICON_REMOTE, TCP_CLIENT_ICON_REMOTE_UNREAD)
 TCP_CLIENT_ICON_LOCAL_SET     = (TCP_CLIENT_ICON_LOCAL, TCP_CLIENT_ICON_LOCAL_UNREAD)
+UDP_CLIENT_ICON_LOCAL_SET     = (UDP_CLIENT_ICON_LOCAL, UDP_CLIENT_ICON_LOCAL_UNREAD)
 
 TEXT_DISCONNECT = u"断开"
 TEXT_CONNECT    = u"连接"
@@ -36,3 +39,4 @@ TEXT_CONNECT    = u"连接"
 STATUS_CONNECTED = u'<font style="BACKGROUND-COLOR:#00FF00">已连接</font>'
 STATUS_NOT_CONNECTED = u'<font style="BACKGROUND-COLOR:#C0C0C0">未连接</font>'
 STATUS_DISCONNECTED = u'<font style="BACKGROUND-COLOR:#FF0000">已断开</font>'
+STATUS_UDP = u'<font style="BACKGROUND-COLOR:#93FF93">UDP MODE</font>'

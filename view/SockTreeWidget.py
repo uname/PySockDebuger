@@ -62,6 +62,9 @@ class SockTreeWidget(QTreeWidget):
     def addLocalTcpClient(self, _id, address):
         self.addSocketItem(_id, address, socktypes.TCP_CLIENT_LOCAL, config.TCP_CLIENT_ICON_LOCAL)
         
+    def addLocalUdpClient(self, _id, address):
+        self.addSocketItem(_id, address, socktypes.UDP_CLIENT_LOCAL, config.UDP_CLIENT_ICON_LOCAL)
+        
     def addRemoteTcpClient(self, serverId, _id, address, port):
         parentItem = self.getSockItemById(serverId)
         if parentItem is None:

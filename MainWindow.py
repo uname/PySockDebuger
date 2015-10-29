@@ -37,12 +37,16 @@ class MainWindow(QtGui.QMainWindow):
         
         self.connect(self.presenter.createTcpServerDialog, signals.SIG_CREATE_TCP_SERVER, self.onCreateTcpServer)
         self.connect(self.presenter.createTcpClientDialog, signals.SIG_CREATE_TCP_CLIENT, self.onCreateTcpClient)
+        self.connect(self.presenter.createUdpClientDialog, signals.SIG_CREATE_UDP_CLIENT, self.onCreateUdpClient)
     
     def onCreateTcpServer(self, ip, port):
         self.presenter.createTcpServer(ip, port)
     
     def onCreateTcpClient(self, ip, port):
         self.presenter.createTcpClient(ip, port)
+    
+    def onCreateUdpClient(self, ip, remoteIp, localIp):
+        self.presenter.createUdpClient(ip, remoteIp, localIp)
         
     def onDataRecved(self, _id, parentId, data):
         logger.debug("id=%d, parentId=%d, data=%s" % (_id, parentId, data))
@@ -92,7 +96,14 @@ class MainWindow(QtGui.QMainWindow):
             self.ui.sockTab.addTcpClient(tcpClient, _id, address)
         else:
             self.tipPupup.makeErrorText(error.TCP_CLIENT_CONNECT_ERROR)
-        
+    
+    def onCreateUdpClientResult(self, udpClient, _id, address):
+        if _id > 0:
+            self.ui.sockTree.addLocalUdpClient(_id, address)
+            self.ui.sockTab.addUdpClient(udpClient, _id, address)
+        else:
+            self.tipPupup.makeErrorText(error.UDP_CLIENT_CONNECT_ERROR)
+            
     def closeEvent(self, e):
         self.presenter.removeAllSockets()
         e.accept()
