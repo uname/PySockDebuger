@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/main_window.ui'
 #
-# Created: Fri Oct 30 14:40:24 2015
+# Created: Fri Oct 30 15:49:57 2015
 #      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(985, 664)
+        MainWindow.resize(944, 587)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout = QtGui.QGridLayout(self.centralwidget)
@@ -35,16 +35,24 @@ class Ui_MainWindow(object):
         self.sockTab.setObjectName(_fromUtf8("sockTab"))
         self.tab = QtGui.QWidget()
         self.tab.setObjectName(_fromUtf8("tab"))
+        self.gridLayout_2 = QtGui.QGridLayout(self.tab)
+        self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
         self.textEdit = QtGui.QTextEdit(self.tab)
-        self.textEdit.setGeometry(QtCore.QRect(10, 10, 641, 121))
+        self.textEdit.setMaximumSize(QtCore.QSize(16777215, 121))
         self.textEdit.setFrameShape(QtGui.QFrame.NoFrame)
         self.textEdit.setObjectName(_fromUtf8("textEdit"))
+        self.gridLayout_2.addWidget(self.textEdit, 0, 0, 1, 2)
         self.qrcodeView = QtGui.QPushButton(self.tab)
-        self.qrcodeView.setGeometry(QtCore.QRect(10, 160, 277, 310))
+        self.qrcodeView.setMinimumSize(QtCore.QSize(277, 310))
         self.qrcodeView.setAutoFillBackground(True)
         self.qrcodeView.setText(_fromUtf8(""))
         self.qrcodeView.setIconSize(QtCore.QSize(277, 310))
         self.qrcodeView.setObjectName(_fromUtf8("qrcodeView"))
+        self.gridLayout_2.addWidget(self.qrcodeView, 1, 0, 1, 1)
+        spacerItem = QtGui.QSpacerItem(372, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem, 1, 1, 1, 1)
+        spacerItem1 = QtGui.QSpacerItem(20, 22, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.gridLayout_2.addItem(spacerItem1, 2, 0, 1, 1)
         self.sockTab.addTab(self.tab, _fromUtf8(""))
         self.gridLayout.addWidget(self.splitter, 1, 1, 1, 1)
         self.horizontalLayout = QtGui.QHBoxLayout()
@@ -55,18 +63,18 @@ class Ui_MainWindow(object):
         self.removeBtn = QtGui.QPushButton(self.centralwidget)
         self.removeBtn.setObjectName(_fromUtf8("removeBtn"))
         self.horizontalLayout.addWidget(self.removeBtn)
-        spacerItem = QtGui.QSpacerItem(668, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
+        spacerItem2 = QtGui.QSpacerItem(668, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem2)
         self.githubBtn = QtGui.QPushButton(self.centralwidget)
         self.githubBtn.setMaximumSize(QtCore.QSize(121, 16777215))
         self.githubBtn.setObjectName(_fromUtf8("githubBtn"))
         self.horizontalLayout.addWidget(self.githubBtn)
         self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 4)
-        spacerItem1 = QtGui.QSpacerItem(20, 567, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem1, 1, 3, 1, 1)
+        spacerItem3 = QtGui.QSpacerItem(20, 567, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem3, 1, 3, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 985, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 944, 23))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)

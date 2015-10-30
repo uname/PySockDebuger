@@ -6,6 +6,7 @@
 2. PyQt4
 3. py2exe(Version for Python2.7，用于在Windows下生成EXE)
 
+![](/resource/exticons/snapshot.png)
 
 #####进度
 ######2015/8/28
@@ -17,3 +18,9 @@
 ######2015/10/13
 TCP服务器已经可用（ASCII文本数据模式）
 TCP客户端内部逻辑基本完成
+
+######2015/10/30
+TCP服务器，TCP客户端和UDP客户端都可用了
+暂未实现重复发送功能
+暂未实现UDP服务器功能
+
