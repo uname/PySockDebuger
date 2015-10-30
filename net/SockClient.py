@@ -38,6 +38,12 @@ class SockClient():
     def getAddress(self):
         return "%s:%d" % (self.ip, self.port)
     
+    def getLocalPort(self):
+        if self.isConnected():
+            return self.sock.getsockname()[1]
+        else:
+            return -1
+            
     def getSockType(self):
         return self.sockType
     

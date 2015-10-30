@@ -23,6 +23,7 @@ class SocketForm(QWidget):
     def setupUi(self):
         self.ui.setupUi(self)
         self.ui.sendBtn.setShortcut(QKeySequence(Qt.Key_Return + Qt.CTRL))
+        self.ui.localPortLabel.setText(self.sock.getLocalPort() > 0 and `self.sock.getLocalPort()` or "?")
         
         sockType = self.sock.getSockType()
         if sockType == socktypes.TCP_CLIENT_REMOTE:
@@ -40,10 +41,12 @@ class SocketForm(QWidget):
         self.ui.connectBtn.setText(config.TEXT_DISCONNECT)
         self.ui.statusLabel.setText(config.STATUS_CONNECTED)
         self.ui.recvTextBrowser.clear()
+        self.ui.localPortLabel.setText(self.sock.getLocalPort() > 0 and `self.sock.getLocalPort()` or "?")
     
     def setupUi_disconnected(self):
         self.ui.connectBtn.setText(config.TEXT_CONNECT)
         self.ui.statusLabel.setText(config.STATUS_DISCONNECTED)
+        self.ui.localPortLabel.setText("?")
         
     def setupSignals(self):
         self.ui.sendBtn.clicked.connect(self.sendData)

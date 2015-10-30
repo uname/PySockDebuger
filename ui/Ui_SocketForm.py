@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file '../ui/socket_form.ui'
 #
-# Created by: PyQt4 UI code generator 4.11.4
+# Created: Fri Oct 30 15:15:00 2015
+#      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -11,16 +12,7 @@ from PyQt4 import QtCore, QtGui
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
-    def _fromUtf8(s):
-        return s
-
-try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+    _fromUtf8 = lambda s: s
 
 class Ui_SocketForm(object):
     def setupUi(self, SocketForm):
@@ -42,6 +34,13 @@ class Ui_SocketForm(object):
         self.statusLabel.setMinimumSize(QtCore.QSize(81, 16))
         self.statusLabel.setObjectName(_fromUtf8("statusLabel"))
         self.horizontalLayout_2.addWidget(self.statusLabel)
+        self.label_4 = QtGui.QLabel(self.groupBox)
+        self.label_4.setObjectName(_fromUtf8("label_4"))
+        self.horizontalLayout_2.addWidget(self.label_4)
+        self.localPortLabel = QtGui.QLabel(self.groupBox)
+        self.localPortLabel.setText(_fromUtf8(""))
+        self.localPortLabel.setObjectName(_fromUtf8("localPortLabel"))
+        self.horizontalLayout_2.addWidget(self.localPortLabel)
         spacerItem = QtGui.QSpacerItem(528, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
         self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
@@ -110,21 +109,23 @@ class Ui_SocketForm(object):
         QtCore.QMetaObject.connectSlotsByName(SocketForm)
 
     def retranslateUi(self, SocketForm):
-        SocketForm.setWindowTitle(_translate("SocketForm", "Form", None))
-        self.connectBtn.setText(_translate("SocketForm", "PushButton", None))
-        self.statusLabel.setText(_translate("SocketForm", "Status", None))
-        self.label.setText(_translate("SocketForm", "Rx", None))
-        self.label_2.setText(_translate("SocketForm", "Tx", None))
-        self.resetBytesBtn.setText(_translate("SocketForm", "清零", None))
-        self.label_3.setText(_translate("SocketForm", "重复发送", None))
-        self.repeatTimesCbx.setItemText(0, _translate("SocketForm", "1", None))
-        self.repeatTimesCbx.setItemText(1, _translate("SocketForm", "10", None))
-        self.repeatTimesCbx.setItemText(2, _translate("SocketForm", "100", None))
-        self.repeatTimesCbx.setItemText(3, _translate("SocketForm", "1000", None))
-        self.repeatTimesCbx.setItemText(4, _translate("SocketForm", "10000", None))
-        self.repeatTimesCbx.setItemText(5, _translate("SocketForm", "100000", None))
-        self.hexModeCkb.setText(_translate("SocketForm", "十六进制模式", None))
-        self.cleanBtn.setText(_translate("SocketForm", "清空", None))
-        self.sendBtn.setToolTip(_translate("SocketForm", "<html><head/><body><p>Ctrl+Enter</p></body></html>", None))
-        self.sendBtn.setText(_translate("SocketForm", "发送", None))
+        SocketForm.setWindowTitle(QtGui.QApplication.translate("SocketForm", "Form", None, QtGui.QApplication.UnicodeUTF8))
+        self.connectBtn.setText(QtGui.QApplication.translate("SocketForm", "PushButton", None, QtGui.QApplication.UnicodeUTF8))
+        self.statusLabel.setText(QtGui.QApplication.translate("SocketForm", "Status", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_4.setText(QtGui.QApplication.translate("SocketForm", "本地端口", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("SocketForm", "Rx", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("SocketForm", "Tx", None, QtGui.QApplication.UnicodeUTF8))
+        self.resetBytesBtn.setText(QtGui.QApplication.translate("SocketForm", "清零", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setText(QtGui.QApplication.translate("SocketForm", "重复发送", None, QtGui.QApplication.UnicodeUTF8))
+        self.repeatTimesCbx.setItemText(0, QtGui.QApplication.translate("SocketForm", "1", None, QtGui.QApplication.UnicodeUTF8))
+        self.repeatTimesCbx.setItemText(1, QtGui.QApplication.translate("SocketForm", "10", None, QtGui.QApplication.UnicodeUTF8))
+        self.repeatTimesCbx.setItemText(2, QtGui.QApplication.translate("SocketForm", "100", None, QtGui.QApplication.UnicodeUTF8))
+        self.repeatTimesCbx.setItemText(3, QtGui.QApplication.translate("SocketForm", "1000", None, QtGui.QApplication.UnicodeUTF8))
+        self.repeatTimesCbx.setItemText(4, QtGui.QApplication.translate("SocketForm", "10000", None, QtGui.QApplication.UnicodeUTF8))
+        self.repeatTimesCbx.setItemText(5, QtGui.QApplication.translate("SocketForm", "100000", None, QtGui.QApplication.UnicodeUTF8))
+        self.hexModeCkb.setText(QtGui.QApplication.translate("SocketForm", "十六进制模式", None, QtGui.QApplication.UnicodeUTF8))
+        self.cleanBtn.setText(QtGui.QApplication.translate("SocketForm", "清空", None, QtGui.QApplication.UnicodeUTF8))
+        self.sendBtn.setToolTip(QtGui.QApplication.translate("SocketForm", "<html><head/><body><p>Ctrl+Enter</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.sendBtn.setText(QtGui.QApplication.translate("SocketForm", "发送", None, QtGui.QApplication.UnicodeUTF8))
 
+import ExtAppIcons_rc
