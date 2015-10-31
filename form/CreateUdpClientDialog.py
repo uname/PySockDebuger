@@ -64,5 +64,6 @@ class CreateUdpClientDialog(QtGui.QDialog):
     def show_(self):
         if self.ui.localPortCmbBox.currentText() == "":
             self.ui.localPortCmbBox.setEditText(`utils.randomPort()`)
-            
+        
+        self.ui.remotePortCmbBox.setFocus()
         self.show()

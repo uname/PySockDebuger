@@ -39,5 +39,6 @@ class CreateTcpServerDialog(QtGui.QDialog):
     def show_(self):
         if self.ui.portCmbBox.currentText() == "":
             self.ui.portCmbBox.setEditText(`utils.randomPort()`)
-            
+        
+        self.ui.portCmbBox.setFocus()
         self.show()

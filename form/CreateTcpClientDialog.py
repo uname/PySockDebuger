@@ -36,4 +36,5 @@ class CreateTcpClientDialog(QtGui.QDialog):
         self.close()
     
     def show_(self):
+        self.ui.portCmbBox.setFocus()
         self.show()
