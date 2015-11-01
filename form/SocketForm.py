@@ -36,6 +36,10 @@ class SocketForm(QWidget):
         elif sockType == socktypes.UDP_CLIENT_LOCAL:
             self.ui.connectBtn.setVisible(False)
             self.ui.statusLabel.setText(config.STATUS_UDP)
+        
+        elif sockType == socktypes.UDP_SERVER:
+            self.ui.connectBtn.setVisible(False)
+            self.ui.statusLabel.setText(config.STATUS_UDP_SERVER)
     
     def setupUi_connected(self):
         self.ui.connectBtn.setText(config.TEXT_DISCONNECT)
@@ -137,7 +141,7 @@ class SocketForm(QWidget):
         try:
             n = self.sock.sendall(data)
         except Exception as e:
-            logger.error("send data error")
+            logger.error("send data error: %s" % e.message)
         
         if n:
             logger.debug("sent bytes: %d" % n)

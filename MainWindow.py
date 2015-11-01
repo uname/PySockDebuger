@@ -37,6 +37,7 @@ class MainWindow(QtGui.QMainWindow):
         
         self.connect(self.presenter.createTcpServerDialog, signals.SIG_CREATE_TCP_SERVER, self.onCreateTcpServer)
         self.connect(self.presenter.createTcpClientDialog, signals.SIG_CREATE_TCP_CLIENT, self.onCreateTcpClient)
+        self.connect(self.presenter.createUdpServerDialog, signals.SIG_CREATE_UDP_SERVER, self.onCreateUdpServer)
         self.connect(self.presenter.createUdpClientDialog, signals.SIG_CREATE_UDP_CLIENT, self.onCreateUdpClient)
     
     def onCreateTcpServer(self, ip, port):
@@ -47,9 +48,12 @@ class MainWindow(QtGui.QMainWindow):
     
     def onCreateUdpClient(self, ip, remoteIp, localIp):
         self.presenter.createUdpClient(ip, remoteIp, localIp)
+    
+    def onCreateUdpServer(self, ip, port):
+        self.presenter.createUdpServer(ip, port)
         
-    def onDataRecved(self, _id, parentId, data):
-        logger.debug("id=%d, parentId=%d, data=%s" % (_id, parentId, data))
+    def onDataRecved(self, _id, data):
+        logger.debug("id=%d, data=%s" % (_id, data))
         self.ui.sockTab.addData(_id, data, config.RECV_TAG)
         
     # def onRemoteClosed(self, _id, parentId):
@@ -90,6 +94,14 @@ class MainWindow(QtGui.QMainWindow):
         else:
             self.tipPupup.makeErrorText(error.TCP_CREATE_FAILED)
     
+    def onCreateUdpServerResult(self, udpServer, _id, address):
+        if _id > 0:
+            self.ui.sockTree.addUdpServer(_id, address)
+            self.ui.sockTab.addUdpServer(udpServer, _id, address)
+            
+        else:
+            self.tipPupup.makeErrorText(error.CREATE_UDP_SERVER_FAILED)
+            
     def onCreateTcpClientResult(self, tcpClient, _id, address):
         if _id > 0:
             self.ui.sockTree.addLocalTcpClient(_id, address)

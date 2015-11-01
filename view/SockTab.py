@@ -26,6 +26,10 @@ class SockTab(QtGui.QTabWidget):
     
     def addUdpClient(self, udpClient, _id, label):
         self.addSockForm(udpClient, _id, label, config.UDP_CLIENT_ICON_LOCAL_SET)
+    
+    def addUdpServer(self, udpServer, _id, label):
+        self.addSockForm(udpServer, _id, label, config.UDP_SERVER_ICON_SET)
+        
         
     def getIndexById(self, _id):
         index = 0

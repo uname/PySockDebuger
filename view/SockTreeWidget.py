@@ -18,9 +18,11 @@ class SockTreeWidget(QTreeWidget):
     def init(self):
         tcpServerEntry = SockTreeItem(socktypes.TCP_SERVER, config.TCP_SERVER_ENTRY_TEXT, config.TCP_SERVER_ROOT_ID)
         tcpClientEntry = SockTreeItem(socktypes.TCP_CLIENT_LOCAL, config.TCP_CLIENT_ENTRY_TEXT, config.TCP_CLIENT_ROOT_ID)
+        udpServerEntry = SockTreeItem(socktypes.UDP_SERVER, config.UDP_SERVER_ENTRY_TEXT, config.UDP_SERVER_ROOT_ID)
         udpClientEntry = SockTreeItem(socktypes.UDP_CLIENT_LOCAL, config.UDP_CLIENT_ENTRY_TEXT, config.UDP_CLIENT_ROOT_ID)
         self.addTopLevelItem (tcpServerEntry)
         self.addTopLevelItem (tcpClientEntry)
+        self.addTopLevelItem (udpServerEntry)
         self.addTopLevelItem (udpClientEntry)
         self.setCurrentItem(tcpServerEntry)
     
@@ -59,6 +61,9 @@ class SockTreeWidget(QTreeWidget):
     def addTcpServer(self, _id, address):
         self.addSocketItem(_id, address, socktypes.TCP_SERVER, config.TCP_SERVER_ICON)
     
+    def addUdpServer(self, _id, address):
+        self.addSocketItem(_id, address, socktypes.UDP_SERVER, config.UDP_SERVER_ICON)
+        
     def addLocalTcpClient(self, _id, address):
         self.addSocketItem(_id, address, socktypes.TCP_CLIENT_LOCAL, config.TCP_CLIENT_ICON_LOCAL)
         

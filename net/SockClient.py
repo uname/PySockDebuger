@@ -66,7 +66,7 @@ class SockClient():
             return
         
     def sendall(self, data):
-        if data is None:
+        if not isinstance(data, basestring):
             return False
         
         return self.sock.sendall(data) is None
@@ -128,7 +128,7 @@ class SockClient():
                     break
                 
                 logger.debug("data from %s:%d -> %s" % (self.parent.ip, self.parent.port, data))
-                sigObject.emit(signals.SIG_DATA_RECVED, self.parent._id, self.parent.parentId, data)
+                sigObject.emit(signals.SIG_DATA_RECVED, self.parent._id, data)
             
             self.parent.close(self.stopflag)
             logger.debug("tcp client stopped")

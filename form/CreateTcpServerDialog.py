@@ -11,6 +11,7 @@ class CreateTcpServerDialog(QtGui.QDialog):
 	
     def __init__(self, parent=None):
         QtGui.QDialog.__init__(self)
+        self.okSig = signals.SIG_CREATE_TCP_SERVER
         self.ui = Ui_CreateTcpServerForm()
         self.ui.setupUi(self)
         self.initIpList()
@@ -32,8 +33,8 @@ class CreateTcpServerDialog(QtGui.QDialog):
         port = int(strPort)
         if not utils.isPortOk(port):
             return
-        
-        self.emit(signals.SIG_CREATE_TCP_SERVER, utils.qstr2str(self.ui.ipCmbBox.currentText()), port)
+            
+        self.emit(self.okSig, utils.qstr2str(self.ui.ipCmbBox.currentText()), port)
         self.close()
 	
     def show_(self):
