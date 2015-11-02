@@ -29,6 +29,7 @@ TCP_CLIENT_ICON_LOCAL_UNREAD  = ":app/icons/app/tcp_client_local_unread.png"
 UDP_CLIENT_ICON_LOCAL         = ":app/icons/app/udp_client_local.png"
 UDP_CLIENT_ICON_LOCAL_UNREAD  = ":app/icons/app/udp_client_local_unread.png"
 QRCODE_ZFB                    = ":qrcode/icons/qrcode/weixin.png"
+GITHUB_LOGO                   = ":ext/icons/ext/github_logo.png"
 
 TCP_CLIENT_ICON_REMOTE_SET    = (TCP_CLIENT_ICON_REMOTE, TCP_CLIENT_ICON_REMOTE_UNREAD)
 TCP_CLIENT_ICON_LOCAL_SET     = (TCP_CLIENT_ICON_LOCAL, TCP_CLIENT_ICON_LOCAL_UNREAD)

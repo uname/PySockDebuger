@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/main_window.ui'
 #
-# Created: Mon Nov 02 11:15:18 2015
+# Created: Mon Nov 02 18:47:19 2015
 #      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -65,7 +65,11 @@ class Ui_MainWindow(object):
         spacerItem2 = QtGui.QSpacerItem(668, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
         self.githubBtn = QtGui.QPushButton(self.centralwidget)
-        self.githubBtn.setMaximumSize(QtCore.QSize(121, 16777215))
+        self.githubBtn.setMaximumSize(QtCore.QSize(121, 23))
+        self.githubBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.githubBtn.setText(_fromUtf8(""))
+        self.githubBtn.setIconSize(QtCore.QSize(80, 16))
+        self.githubBtn.setFlat(True)
         self.githubBtn.setObjectName(_fromUtf8("githubBtn"))
         self.horizontalLayout.addWidget(self.githubBtn)
         self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 4)
@@ -99,7 +103,6 @@ class Ui_MainWindow(object):
         self.sockTab.setTabText(self.sockTab.indexOf(self.tab), QtGui.QApplication.translate("MainWindow", "Welcome", None, QtGui.QApplication.UnicodeUTF8))
         self.createBtn.setText(QtGui.QApplication.translate("MainWindow", "创建", None, QtGui.QApplication.UnicodeUTF8))
         self.removeBtn.setText(QtGui.QApplication.translate("MainWindow", "删除", None, QtGui.QApplication.UnicodeUTF8))
-        self.githubBtn.setText(QtGui.QApplication.translate("MainWindow", "Fork on Github", None, QtGui.QApplication.UnicodeUTF8))
 
 from view.SockTab import SockTab
 from view.SockTreeWidget import SockTreeWidget
