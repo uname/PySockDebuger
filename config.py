@@ -1,10 +1,10 @@
 #-*- coding: utf-8 -*-
 RELEASE_TYPE          = "py"
 GITHUB_HOME           = "https://github.com/uname/PySockDebuger"
-TCP_SERVER_ENTRY_TEXT = u"TCP服务器"
-TCP_CLIENT_ENTRY_TEXT = u"TCP客户端"
-UDP_SERVER_ENTRY_TEXT = u"UDP服务器"
-UDP_CLIENT_ENTRY_TEXT = u"UDP客户端"
+TCP_SERVER_ENTRY_TEXT = u"TCP Server"
+TCP_CLIENT_ENTRY_TEXT = u"TCP Client"
+UDP_SERVER_ENTRY_TEXT = u"UDP Server"
+UDP_CLIENT_ENTRY_TEXT = u"UDP Client"
 RECV_TAG              = "[RECV]: "
 SEND_TAG              = "[SEND]: "
 
@@ -28,7 +28,7 @@ TCP_CLIENT_ICON_LOCAL         = ":app/icons/app/tcp_client_local.png"
 TCP_CLIENT_ICON_LOCAL_UNREAD  = ":app/icons/app/tcp_client_local_unread.png"
 UDP_CLIENT_ICON_LOCAL         = ":app/icons/app/udp_client_local.png"
 UDP_CLIENT_ICON_LOCAL_UNREAD  = ":app/icons/app/udp_client_local_unread.png"
-QRCODE_ZFB                    = ":qrcode/icons/qrcode/zfb.png"
+QRCODE_ZFB                    = ":qrcode/icons/qrcode/weixin.png"
 
 TCP_CLIENT_ICON_REMOTE_SET    = (TCP_CLIENT_ICON_REMOTE, TCP_CLIENT_ICON_REMOTE_UNREAD)
 TCP_CLIENT_ICON_LOCAL_SET     = (TCP_CLIENT_ICON_LOCAL, TCP_CLIENT_ICON_LOCAL_UNREAD)
