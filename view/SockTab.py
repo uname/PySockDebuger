@@ -9,7 +9,7 @@ class SockTab(QtGui.QTabWidget):
     
     def __init__(self, parent=None):
         QtGui.QTabWidget.__init__(self, parent)
-	self.setMovable(True)
+	self.setMovable(False)
         self.forms = [{"id": 0}]
         
     def addSockForm(self, tcpClient, _id, label, iconSet):
