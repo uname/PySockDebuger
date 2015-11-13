@@ -112,7 +112,8 @@ class SockClient():
         def run(self):
             if self.parent.sock is None:
                 return
-                
+            
+            data = ""
             while not self.stopflag:
                 rfds, _, efds = select.select([self.parent.sock], [], [self.parent.sock], 0.1)
                 if len(efds) > 0:
@@ -121,8 +122,12 @@ class SockClient():
                     
                 if len(rfds) < 1:
                     continue
+                try:
+                    data = self.parent.sock.recv(SockClient.RECV_SIZE)
+                except:
+                    logger.error("recv error")
+                    break
                     
-                data = self.parent.sock.recv(SockClient.RECV_SIZE)
                 if data == "":
                     logger.error("socket closed")
                     break
