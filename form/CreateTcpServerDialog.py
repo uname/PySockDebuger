@@ -3,14 +3,15 @@ import utils
 import signals
 import config
 import error
+from CreateDialog import CreateDialog
 from ui.Ui_CreateTcpServerForm import Ui_CreateTcpServerForm
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 
-class CreateTcpServerDialog(QtGui.QDialog):
+class CreateTcpServerDialog(CreateDialog):
 	
     def __init__(self, parent=None):
-        QtGui.QDialog.__init__(self)
+        CreateDialog.__init__(self)
         self.okSig = signals.SIG_CREATE_TCP_SERVER
         self.ui = Ui_CreateTcpServerForm()
         self.ui.setupUi(self)

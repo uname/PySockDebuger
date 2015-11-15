@@ -3,14 +3,15 @@ import utils
 import signals
 import config
 import error
+from CreateDialog import CreateDialog
 from ui.Ui_CreateUdpClientForm import Ui_CreateUdpClientForm
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 
-class CreateUdpClientDialog(QtGui.QDialog):
+class CreateUdpClientDialog(CreateDialog):
 	
     def __init__(self, parent=None):
-        QtGui.QDialog.__init__(self)
+        CreateDialog.__init__(self)
         self.ui = Ui_CreateUdpClientForm()
         self.ui.setupUi(self)
         self.initIpList()

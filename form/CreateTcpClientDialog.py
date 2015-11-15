@@ -2,14 +2,15 @@
 import config
 import utils
 import signals
+from CreateDialog import CreateDialog
 from ui.Ui_CreateTcpClientForm import Ui_CreateTcpClientForm
 from form.TipPupup import TipPupup
 from PyQt4 import QtGui
 
-class CreateTcpClientDialog(QtGui.QDialog):
+class CreateTcpClientDialog(CreateDialog):
 	
     def __init__(self, parent=None):
-        QtGui.QDialog.__init__(self)
+        CreateDialog.__init__(self)
         self.ui = Ui_CreateTcpClientForm()
         self.ui.setupUi(self)
         self.initIpList()

@@ -19,6 +19,8 @@ TCP_CLIENT_ROOT_ID = -2
 UDP_SERVER_ROOT_ID = -3
 UDP_CLIENT_ROOT_ID = -4
 
+LOGO_ICON = ":app/icons/app/logo1.png"
+
 TCP_SERVER_ICON               = ":app/icons/app/tcp_server.png"
 UDP_SERVER_ICON               = ":app/icons/app/udp_server.png"
 UDP_SERVER_ICON_UNREAD        = ":app/icons/app/udp_server_unread.png"

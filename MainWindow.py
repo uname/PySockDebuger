@@ -24,6 +24,7 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.sockTree.init()
         self.ui.qrcodeView.setPixmap(QtGui.QPixmap(config.QRCODE_ZFB))
         self.ui.githubBtn.setIcon(QtGui.QIcon(config.GITHUB_LOGO))
+        self.setWindowIcon(QtGui.QIcon(config.LOGO_ICON))
         
     def setupSignals(self):
         self.ui.createBtn.clicked.connect(self.onCreateBtnClicked)
