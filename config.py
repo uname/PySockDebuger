@@ -1,5 +1,5 @@
 #-*- coding: utf-8 -*-
-RELEASE_TYPE          = "py"
+RELEASE_TYPE          = "release"
 GITHUB_HOME           = "https://github.com/uname/PySockDebuger"
 TCP_SERVER_ENTRY_TEXT = u"TCP Server"
 TCP_CLIENT_ENTRY_TEXT = u"TCP Client"
